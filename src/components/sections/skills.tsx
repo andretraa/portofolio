@@ -1,18 +1,28 @@
-import { skills } from "@/data/skills";
 import { SectionHeading } from "@/components/ui";
+import { getPortfolio, getSectionConfig } from "@/lib/portfolio";
 import { AnimatedSection, FadeUp } from "@/lib/animations";
 
 export function Skills() {
+  const { skills } = getPortfolio();
+  const section = getSectionConfig("skills");
+  const heading = section?.heading;
+
   return (
-    <AnimatedSection id="skills" className="section-padding section-glow">
+    <AnimatedSection
+      id="skills"
+      className={section?.className ?? "section-padding section-glow"}
+    >
       <div className="section-container">
-        <FadeUp>
-          <SectionHeading
-            label="Expertise"
-            title="Skills"
-            subtitle="Core competencies honed through real-world projects."
-          />
-        </FadeUp>
+        {heading && (
+          <FadeUp>
+            <SectionHeading
+              label={heading.label}
+              title={heading.title}
+              subtitle={heading.subtitle}
+              align={heading.align}
+            />
+          </FadeUp>
+        )}
 
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {skills.map((skill, index) => (

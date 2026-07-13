@@ -1,28 +1,38 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { journey } from "@/data/experience";
 import { SectionHeading } from "@/components/ui";
+import { getPortfolio, getSectionConfig } from "@/lib/portfolio";
 import { AnimatedSection, FadeUp } from "@/lib/animations";
 
 export function Journey() {
+  const { journey } = getPortfolio();
+  const section = getSectionConfig("journey");
+  const heading = section?.heading;
+
   return (
-    <AnimatedSection id="journey" className="section-padding section-glow">
+    <AnimatedSection
+      id="journey"
+      className={section?.className ?? "section-padding section-glow"}
+    >
       <div className="section-container">
-        <FadeUp>
-          <SectionHeading
-            label="Timeline"
-            title="Journey"
-            subtitle="From intern to senior engineer — building expertise across domains."
-          />
-        </FadeUp>
+        {heading && (
+          <FadeUp>
+            <SectionHeading
+              label={heading.label}
+              title={heading.title}
+              subtitle={heading.subtitle}
+              align={heading.align}
+            />
+          </FadeUp>
+        )}
 
         <div className="relative overflow-x-auto pb-4">
           <div className="absolute top-[3.25rem] right-8 left-8 hidden h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent md:block" />
 
           <div className="flex min-w-max items-start gap-0 px-2">
             {journey.map((step, index) => (
-              <FadeUp key={`${step.year}-${step.label}`} delay={index * 0.07}>
+              <FadeUp key={`${step.year}-${step.label}-${index}`} delay={index * 0.07}>
                 <div className="flex items-start">
                   <div className="flex w-28 flex-col items-center md:w-36">
                     <span className="font-mono text-xs text-primary">

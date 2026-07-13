@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { siteConfig } from "@/lib/site-config";
+import { getPortfolio } from "@/lib/portfolio";
 
 export function Footer() {
+  const { site, profile, footer } = getPortfolio();
+
   return (
     <footer className="relative border-t border-border">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
@@ -12,29 +14,29 @@ export function Footer() {
               href="#"
               className="font-heading text-lg font-bold text-text-primary"
             >
-              Ridwan<span className="text-primary">.</span>
+              {profile.displayName}
+              <span className="text-primary">{footer.brandSuffix}</span>
             </Link>
-            <p className="mt-2 text-sm text-text-secondary">
-              Senior Software Engineer
-            </p>
+            <p className="mt-2 text-sm text-text-secondary">{footer.tagline}</p>
           </div>
 
           <p className="text-center text-sm text-text-secondary">
             Built with{" "}
-            <span className="text-text-primary">Next.js</span>
-            {" · "}
-            <span className="text-text-primary">TailwindCSS</span>
-            {" · "}
-            <span className="text-text-primary">Framer Motion</span>
+            {footer.builtWith.map((tech, i) => (
+              <span key={tech}>
+                {i > 0 && " · "}
+                <span className="text-text-primary">{tech}</span>
+              </span>
+            ))}
           </p>
 
           <p className="text-sm text-text-secondary">
-            &copy; {new Date().getFullYear()} {siteConfig.name}
+            &copy; {new Date().getFullYear()} {site.name}
           </p>
         </div>
 
         <p className="mt-8 text-center text-xs text-text-muted">
-          Made with <span aria-hidden="true">❤️</span> by Ridwan
+          Made with <span aria-hidden="true">❤️</span> by {footer.madeBy}
         </p>
       </div>
     </footer>

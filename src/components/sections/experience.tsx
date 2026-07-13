@@ -3,25 +3,37 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { SectionHeading } from "@/components/ui";
-import { experience } from "@/data/experience";
+import {
+  getDefaultExperienceId,
+  getPortfolio,
+  getSectionConfig,
+} from "@/lib/portfolio";
 import { AnimatedSection, FadeUp } from "@/lib/animations";
 
 export function Experience() {
-  const [activeId, setActiveId] = useState<string | null>("senior");
+  const { experience } = getPortfolio();
+  const section = getSectionConfig("experience");
+  const heading = section?.heading;
+  const [activeId, setActiveId] = useState<string | null>(
+    getDefaultExperienceId()
+  );
 
   return (
     <AnimatedSection
       id="experience"
-      className="section-padding bg-surface/20 section-glow"
+      className={section?.className ?? "section-padding section-glow"}
     >
       <div className="section-container">
-        <FadeUp>
-          <SectionHeading
-            label="Career"
-            title="Experience"
-            subtitle="My professional journey in software engineering."
-          />
-        </FadeUp>
+        {heading && (
+          <FadeUp>
+            <SectionHeading
+              label={heading.label}
+              title={heading.title}
+              subtitle={heading.subtitle}
+              align={heading.align}
+            />
+          </FadeUp>
+        )}
 
         <div className="relative mx-auto max-w-3xl">
           <div
@@ -82,7 +94,10 @@ export function Experience() {
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                          transition={{
+                            duration: 0.35,
+                            ease: [0.22, 1, 0.36, 1],
+                          }}
                           className="overflow-hidden"
                         >
                           <p className="mt-4 text-sm leading-relaxed text-text-secondary">

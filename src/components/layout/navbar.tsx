@@ -3,9 +3,10 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { navLinks } from "@/lib/site-config";
+import { getNavLinks } from "@/lib/portfolio";
 
 export function Navbar() {
+  const navLinks = getNavLinks();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -17,7 +18,7 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    const sections = navLinks.map((l) => l.href.replace("#", ""));
+    const sections = getNavLinks().map((l) => l.href.replace("#", ""));
     const observers: IntersectionObserver[] = [];
 
     sections.forEach((id) => {

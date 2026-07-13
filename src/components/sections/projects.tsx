@@ -1,21 +1,31 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { projects } from "@/data/projects";
 import { SectionHeading } from "@/components/ui";
+import { getPortfolio, getSectionConfig } from "@/lib/portfolio";
 import { AnimatedSection, FadeUp } from "@/lib/animations";
 
 export function Projects() {
+  const { projects } = getPortfolio();
+  const section = getSectionConfig("projects");
+  const heading = section?.heading;
+
   return (
-    <AnimatedSection id="projects" className="section-padding section-glow">
+    <AnimatedSection
+      id="projects"
+      className={section?.className ?? "section-padding section-glow"}
+    >
       <div className="section-container">
-        <FadeUp>
-          <SectionHeading
-            label="Work"
-            title="Featured Projects"
-            subtitle="Selected work spanning healthcare systems, marketplaces, and enterprise applications."
-          />
-        </FadeUp>
+        {heading && (
+          <FadeUp>
+            <SectionHeading
+              label={heading.label}
+              title={heading.title}
+              subtitle={heading.subtitle}
+              align={heading.align}
+            />
+          </FadeUp>
+        )}
 
         <div className="space-y-20">
           {projects.map((project, index) => (

@@ -1,33 +1,40 @@
-import { impactStats } from "@/data/skills";
 import { AnimatedCounter, SectionHeading } from "@/components/ui";
+import { getPortfolio, getSectionConfig } from "@/lib/portfolio";
 import { AnimatedSection, FadeUp } from "@/lib/animations";
 
 export function EngineeringImpact() {
+  const { impact } = getPortfolio();
+  const section = getSectionConfig("impact");
+  const heading = section?.heading;
+
   return (
     <AnimatedSection
       id="impact"
-      className="section-padding bg-surface/20 section-glow"
+      className={section?.className ?? "section-padding section-glow"}
     >
       <div className="section-container">
-        <FadeUp>
-          <SectionHeading
-            label="Impact"
-            title="Engineering Impact"
-            subtitle="Measurable contributions across projects and production systems."
-            align="center"
-          />
-        </FadeUp>
+        {heading && (
+          <FadeUp>
+            <SectionHeading
+              label={heading.label}
+              title={heading.title}
+              subtitle={heading.subtitle}
+              align={heading.align}
+            />
+          </FadeUp>
+        )}
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {impactStats.map((stat, index) => (
-            <FadeUp key={stat.label} delay={index * 0.08}>
+          {impact.map((stat, index) => (
+            <FadeUp key={stat.id} delay={index * 0.08}>
               <div className="gradient-border group rounded-2xl p-px">
                 <div className="glass-card h-full rounded-2xl p-8 text-center transition-all duration-300 group-hover:border-primary/20">
                   <p className="font-heading text-4xl font-bold md:text-5xl">
                     <span className="gradient-text">
                       <AnimatedCounter
-                        id={`counter-${stat.label}`}
+                        id={`counter-${stat.id}`}
                         value={stat.value}
+                        suffix={stat.suffix ?? "+"}
                       />
                     </span>
                   </p>

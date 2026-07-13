@@ -2,25 +2,12 @@
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowIcon, MagneticButton } from "@/components/ui";
-import { siteConfig } from "@/lib/site-config";
+import { buildCodeLines, getPortfolio } from "@/lib/portfolio";
 import { FadeUp } from "@/lib/animations";
 
 function CodeVisual() {
-  const lines = [
-    { indent: 0, content: "const engineer = {", color: "text-secondary" },
-    { indent: 1, content: 'name: "Ridwan",', color: "text-text-primary" },
-    {
-      indent: 1,
-      content: 'role: "Senior Software Engineer",',
-      color: "text-text-primary",
-    },
-    { indent: 1, content: "skills: [", color: "text-text-primary" },
-    { indent: 2, content: '"Laravel", "Golang",', color: "text-success" },
-    { indent: 2, content: '"React Native", "Next.js"', color: "text-success" },
-    { indent: 1, content: "],", color: "text-text-primary" },
-    { indent: 1, content: "build: () => deploy()", color: "text-primary" },
-    { indent: 0, content: "};", color: "text-secondary" },
-  ];
+  const { profile } = getPortfolio();
+  const lines = buildCodeLines();
 
   return (
     <div className="relative animate-float">
@@ -36,13 +23,13 @@ function CodeVisual() {
                 <div className="h-3 w-3 rounded-full bg-green-500/70" />
               </div>
               <span className="font-mono text-xs text-text-muted">
-                portfolio.ts
+                {profile.codeSnippet.fileName}
               </span>
             </div>
             <pre className="font-mono text-[13px] leading-relaxed">
               {lines.map((line, i) => (
                 <motion.div
-                  key={i}
+                  key={`${line.content}-${i}`}
                   initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.6 + i * 0.07, duration: 0.4 }}
@@ -90,6 +77,8 @@ function ScrollIndicator() {
 }
 
 export function Hero() {
+  const { profile } = getPortfolio();
+  const primaryCtas = profile.ctas.filter((cta) => cta.variant !== "ghost");
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
@@ -125,82 +114,87 @@ export function Hero() {
       <div className="section-container relative z-10 py-32">
         <div className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
           <div>
-            <FadeUp>
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface/50 px-4 py-1.5 backdrop-blur-sm">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-60" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
-                </span>
-                <span className="font-mono text-xs text-text-secondary">
-                  Available for opportunities
-                </span>
-              </div>
-            </FadeUp>
+            {profile.available && (
+              <FadeUp>
+                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface/50 px-4 py-1.5 backdrop-blur-sm">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-60" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
+                  </span>
+                  <span className="font-mono text-xs text-text-secondary">
+                    {profile.availabilityText}
+                  </span>
+                </div>
+              </FadeUp>
+            )}
 
             <FadeUp delay={0.1}>
               <p className="mb-3 font-mono text-sm tracking-wide text-secondary">
-                Hello, I&apos;m
+                {profile.greeting}
               </p>
             </FadeUp>
 
             <FadeUp delay={0.15}>
               <h1 className="font-heading text-5xl font-bold tracking-tight md:text-6xl lg:text-[5.5rem] lg:leading-[1.05]">
-                <span className="gradient-text">Ridwan</span>
+                <span className="gradient-text">{profile.displayName}</span>
                 <span className="text-primary">.</span>
               </h1>
             </FadeUp>
 
             <FadeUp delay={0.2}>
               <p className="mt-5 font-heading text-xl text-text-secondary md:text-2xl">
-                Senior{" "}
-                <span className="text-text-primary">Software Engineer</span>
+                {profile.roleHighlight ? (
+                  <>
+                    {profile.role.replace(profile.roleHighlight, "").trim()}{" "}
+                    <span className="text-text-primary">
+                      {profile.roleHighlight}
+                    </span>
+                  </>
+                ) : (
+                  profile.role
+                )}
               </p>
             </FadeUp>
 
             <FadeUp delay={0.25}>
               <p className="mt-6 max-w-md text-base leading-relaxed text-text-secondary md:text-lg">
-                Building reliable software — from backend architecture to
-                production deployment.
+                {profile.tagline}
               </p>
             </FadeUp>
 
             <FadeUp delay={0.3}>
               <div className="mt-10 flex flex-wrap gap-3">
-                <MagneticButton
-                  href="#projects"
-                  variant="primary"
-                  icon={<ArrowIcon />}
-                >
-                  View Projects
-                </MagneticButton>
-                <MagneticButton
-                  href={siteConfig.cvUrl}
-                  variant="secondary"
-                  download
-                >
-                  Download CV
-                </MagneticButton>
+                {primaryCtas.map((cta) => (
+                  <MagneticButton
+                    key={cta.id}
+                    href={cta.href}
+                    variant={cta.variant}
+                    external={cta.external}
+                    download={cta.download}
+                    icon={cta.showArrow ? <ArrowIcon /> : undefined}
+                  >
+                    {cta.label}
+                  </MagneticButton>
+                ))}
               </div>
             </FadeUp>
 
-            <FadeUp delay={0.35}>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <MagneticButton
-                  href={siteConfig.github}
-                  variant="ghost"
-                  external
-                >
-                  GitHub
-                </MagneticButton>
-                <MagneticButton
-                  href={siteConfig.linkedin}
-                  variant="ghost"
-                  external
-                >
-                  LinkedIn
-                </MagneticButton>
-              </div>
-            </FadeUp>
+            {profile.socialLinks.length > 0 && (
+              <FadeUp delay={0.35}>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {profile.socialLinks.map((link) => (
+                    <MagneticButton
+                      key={link.id}
+                      href={link.href}
+                      variant={link.variant ?? "ghost"}
+                      external
+                    >
+                      {link.label}
+                    </MagneticButton>
+                  ))}
+                </div>
+              </FadeUp>
+            )}
           </div>
 
           <motion.div
