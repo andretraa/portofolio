@@ -40,12 +40,12 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-50 pt-3">
+    <header className="fixed inset-x-0 top-0 z-50 md:top-1.5 md:px-4">
       <nav
-        className={`section-container flex h-14 items-center justify-between rounded-2xl border px-3 transition-all duration-500 sm:px-4 ${
+        className={`flex h-14 w-full items-center justify-between px-4 transition-all duration-300 md:section-container md:rounded-2xl md:border md:px-4 ${
           scrolled
-            ? "border-border bg-surface/80 shadow-lg shadow-black/10 backdrop-blur-2xl"
-            : "border-transparent bg-surface/30 backdrop-blur-md"
+            ? "border-border bg-surface/95 shadow-sm backdrop-blur-xl md:shadow-lg md:shadow-black/10"
+            : "border-b border-border/60 bg-surface/90 backdrop-blur-lg md:border-transparent md:bg-surface/40"
         }`}
       >
         <Link
@@ -56,7 +56,7 @@ export function Navbar() {
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-secondary text-xs font-bold text-white">
             MR
           </span>
-          <span className="hidden text-text-primary sm:inline">
+          <span className="text-text-primary sm:inline">
             Ridwan<span className="text-primary">.</span>
           </span>
         </Link>
@@ -99,7 +99,7 @@ export function Navbar() {
 
           <button
             type="button"
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-surface/50 md:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-surface-elevated/80 md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
@@ -121,16 +121,16 @@ export function Navbar() {
 
       {mobileOpen && (
         <motion.div
-          initial={{ opacity: 0, y: -8, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          className="section-container mt-2 overflow-hidden rounded-2xl border border-border bg-background/95 shadow-xl backdrop-blur-2xl md:hidden"
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="border-b border-border bg-surface/98 px-4 py-3 backdrop-blur-xl md:hidden"
         >
-          <ul className="flex flex-col gap-1 p-3">
+          <ul className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="block rounded-xl px-4 py-3 text-sm text-text-secondary transition-colors hover:bg-white/[0.04] hover:text-text-primary"
+                  className="block rounded-xl px-3 py-3 text-sm text-text-secondary transition-colors hover:bg-white/[0.04] hover:text-text-primary"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}
@@ -140,7 +140,7 @@ export function Navbar() {
             <li className="mt-2 border-t border-border pt-2">
               <Link
                 href="#contact"
-                className="block rounded-xl bg-primary/10 px-4 py-3 text-center text-sm font-medium text-primary"
+                className="block rounded-xl bg-primary/10 px-3 py-3 text-center text-sm font-medium text-primary"
                 onClick={() => setMobileOpen(false)}
               >
                 Let&apos;s Talk

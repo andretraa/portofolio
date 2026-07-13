@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { Navbar } from "@/components/layout/navbar";
@@ -26,6 +26,12 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -68,7 +74,7 @@ export default function RootLayout({
         <ScrollProgress />
         <MouseGlow />
         <Navbar />
-        <main>{children}</main>
+        <main className="w-full overflow-x-hidden">{children}</main>
         <Footer />
         <Analytics />
       </body>

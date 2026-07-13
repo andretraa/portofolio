@@ -43,7 +43,7 @@ export function Projects() {
         )}
 
         <FadeUp delay={0.05}>
-          <div className="mb-16 -mx-2 flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide md:gap-5">
+          <div className="mobile-bleed mb-16 flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide sm:gap-4 md:gap-5">
             {projects.map((project, i) => (
               <button
                 key={`featured-${project.id}`}

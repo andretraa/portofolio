@@ -115,7 +115,7 @@ export function Hero() {
         style={{ x: parallaxX, y: parallaxY }}
       />
 
-      <div className="section-container relative z-10 py-24 pt-28 sm:py-28 md:py-32">
+      <div className="section-container relative z-10 py-20 pt-[4.5rem] sm:py-24 sm:pt-28 md:py-32">
         <div className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
           <div>
             {profile.available && (

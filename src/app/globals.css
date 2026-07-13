@@ -20,9 +20,11 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
+  overflow-x: hidden;
   background: linear-gradient(
     180deg,
     #16161f 0%,
@@ -46,11 +48,71 @@ body {
 }
 
 .section-container {
-  @apply mx-auto w-full max-w-6xl px-4 sm:px-5 md:px-6 lg:px-8;
+  @apply mx-auto w-full max-w-6xl;
+  padding-left: max(0.875rem, env(safe-area-inset-left));
+  padding-right: max(0.875rem, env(safe-area-inset-right));
+}
+
+@media (min-width: 640px) {
+  .section-container {
+    padding-left: max(1.25rem, env(safe-area-inset-left));
+    padding-right: max(1.25rem, env(safe-area-inset-right));
+  }
+}
+
+@media (min-width: 768px) {
+  .section-container {
+    padding-left: max(1.5rem, env(safe-area-inset-left));
+    padding-right: max(1.5rem, env(safe-area-inset-right));
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-container {
+    padding-left: max(2rem, env(safe-area-inset-left));
+    padding-right: max(2rem, env(safe-area-inset-right));
+  }
+}
+
+/* Full-bleed on mobile, contained on desktop */
+.section-shell {
+  @apply w-full;
+}
+
+@media (min-width: 768px) {
+  .section-shell {
+    @apply mx-auto max-w-6xl;
+    padding-left: max(1.5rem, env(safe-area-inset-left));
+    padding-right: max(1.5rem, env(safe-area-inset-right));
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-shell {
+    padding-left: max(2rem, env(safe-area-inset-left));
+    padding-right: max(2rem, env(safe-area-inset-right));
+  }
 }
 
 .section-padding {
-  @apply py-28 md:py-36;
+  @apply py-20 md:py-32 lg:py-36;
+}
+
+/* Break out of container padding on mobile for horizontal scrollers */
+.mobile-bleed {
+  margin-left: calc(-1 * max(0.875rem, env(safe-area-inset-left)));
+  margin-right: calc(-1 * max(0.875rem, env(safe-area-inset-right)));
+  padding-left: max(0.875rem, env(safe-area-inset-left));
+  padding-right: max(0.875rem, env(safe-area-inset-right));
+}
+
+@media (min-width: 640px) {
+  .mobile-bleed {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .gradient-text {
@@ -72,7 +134,12 @@ body {
     linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 72px 72px;
-  mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, black 30%, transparent 75%);
+}
+
+@media (min-width: 768px) {
+  .grid-bg {
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, black 30%, transparent 75%);
+  }
 }
 
 .noise-bg::before {
