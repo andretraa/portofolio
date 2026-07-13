@@ -7,6 +7,8 @@ export interface Project {
   stack: string[];
   contributions: string[];
   gradient: string;
+  accent: string;
+  initials: string;
 }
 
 export const projects: Project[] = [
@@ -26,6 +28,8 @@ export const projects: Project[] = [
       "Maintenance",
     ],
     gradient: "from-indigo-500/20 to-cyan-500/20",
+    accent: "#4F46E5",
+    initials: "JS",
   },
   {
     id: "klikmedis",
@@ -42,6 +46,8 @@ export const projects: Project[] = [
       "WhatsApp Integration",
     ],
     gradient: "from-cyan-500/20 to-emerald-500/20",
+    accent: "#06B6D4",
+    initials: "KM",
   },
   {
     id: "baytgo",
@@ -59,6 +65,8 @@ export const projects: Project[] = [
       "Architecture",
     ],
     gradient: "from-violet-500/20 to-indigo-500/20",
+    accent: "#8B5CF6",
+    initials: "BG",
   },
   {
     id: "webyouneed",
@@ -70,6 +78,8 @@ export const projects: Project[] = [
     stack: ["Laravel", "React", "MySQL", "Nginx"],
     contributions: ["Backend", "Frontend", "Deployment"],
     gradient: "from-blue-500/20 to-indigo-500/20",
+    accent: "#3B82F6",
+    initials: "WY",
   },
   {
     id: "daksa",
@@ -81,5 +91,7 @@ export const projects: Project[] = [
     stack: ["Laravel", "MySQL", "Nginx"],
     contributions: ["Full Stack Development", "Server Deployment"],
     gradient: "from-emerald-500/20 to-cyan-500/20",
+    accent: "#10B981",
+    initials: "DC",
   },
 ];
