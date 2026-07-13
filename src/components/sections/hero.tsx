@@ -2,6 +2,8 @@
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowIcon, MagneticButton } from "@/components/ui";
+import { FloatingParticles } from "@/components/ui/floating-particles";
+import { RotatingText } from "@/components/ui/rotating-text";
 import { buildCodeLines, getPortfolio } from "@/lib/portfolio";
 import { FadeUp } from "@/lib/animations";
 
@@ -10,7 +12,7 @@ function CodeVisual() {
   const lines = buildCodeLines();
 
   return (
-    <div className="relative animate-float">
+    <div className="relative animate-float perspective-1000">
       <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-primary/25 via-transparent to-secondary/20 blur-3xl animate-pulse-glow" />
       <div className="shine-border relative overflow-hidden rounded-2xl">
         <div className="relative overflow-hidden rounded-2xl border border-border/80 bg-surface/90 p-6 backdrop-blur-sm glow-primary">
@@ -83,8 +85,8 @@ export function Hero() {
   const mouseY = useMotionValue(0);
   const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
   const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
-  const parallaxX = useTransform(springX, [-0.5, 0.5], [-20, 20]);
-  const parallaxY = useTransform(springY, [-0.5, 0.5], [-20, 20]);
+  const parallaxX = useTransform(springX, [-0.5, 0.5], [-24, 24]);
+  const parallaxY = useTransform(springY, [-0.5, 0.5], [-24, 24]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -100,14 +102,16 @@ export function Hero() {
     >
       <div className="absolute inset-0 grid-bg" />
       <div className="absolute inset-0 mesh-gradient" />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-transparent to-background" />
+      <div className="absolute inset-0 aurora-bg opacity-60" />
+      <FloatingParticles />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-transparent to-background" />
 
       <motion.div
-        className="pointer-events-none absolute top-1/3 left-1/4 h-[500px] w-[500px] rounded-full bg-primary/8 blur-[100px]"
+        className="pointer-events-none absolute top-1/3 left-1/4 h-[500px] w-[500px] rounded-full bg-primary/10 blur-[120px]"
         style={{ x: parallaxX, y: parallaxY }}
       />
       <motion.div
-        className="pointer-events-none absolute right-1/4 bottom-1/3 h-80 w-80 rounded-full bg-secondary/8 blur-[80px]"
+        className="pointer-events-none absolute right-1/4 bottom-1/3 h-80 w-80 rounded-full bg-secondary/10 blur-[100px]"
         style={{ x: parallaxX, y: parallaxY }}
       />
 
@@ -116,12 +120,12 @@ export function Hero() {
           <div>
             {profile.available && (
               <FadeUp>
-                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface/50 px-4 py-1.5 backdrop-blur-sm">
+                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-success/20 bg-success/5 px-4 py-1.5 backdrop-blur-sm">
                   <span className="relative flex h-2 w-2">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-60" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
                   </span>
-                  <span className="font-mono text-xs text-text-secondary">
+                  <span className="font-mono text-xs text-success">
                     {profile.availabilityText}
                   </span>
                 </div>
@@ -135,7 +139,7 @@ export function Hero() {
             </FadeUp>
 
             <FadeUp delay={0.15}>
-              <h1 className="font-heading text-5xl font-bold tracking-tight md:text-6xl lg:text-[5.5rem] lg:leading-[1.05]">
+              <h1 className="font-heading text-5xl font-bold tracking-tight text-glow md:text-6xl lg:text-[5.5rem] lg:leading-[1.05]">
                 <span className="gradient-text">{profile.displayName}</span>
                 <span className="text-primary">.</span>
               </h1>
@@ -156,14 +160,34 @@ export function Hero() {
               </p>
             </FadeUp>
 
+            <FadeUp delay={0.22}>
+              <p className="mt-3 font-heading text-lg text-text-secondary md:text-xl">
+                Building{" "}
+                <RotatingText phrases={profile.rotatingPhrases} />
+              </p>
+            </FadeUp>
+
             <FadeUp delay={0.25}>
               <p className="mt-6 max-w-md text-base leading-relaxed text-text-secondary md:text-lg">
                 {profile.tagline}
               </p>
             </FadeUp>
 
+            <FadeUp delay={0.28}>
+              <div className="mt-8 flex flex-wrap gap-6 border-y border-border py-5">
+                {profile.stats.map((stat) => (
+                  <div key={stat.label}>
+                    <p className="font-heading text-2xl font-bold text-primary md:text-3xl">
+                      {stat.value}
+                    </p>
+                    <p className="mt-0.5 text-xs text-text-muted">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+            </FadeUp>
+
             <FadeUp delay={0.3}>
-              <div className="mt-10 flex flex-wrap gap-3">
+              <div className="mt-8 flex flex-wrap gap-3">
                 {primaryCtas.map((cta) => (
                   <MagneticButton
                     key={cta.id}
@@ -181,7 +205,7 @@ export function Hero() {
 
             {profile.socialLinks.length > 0 && (
               <FadeUp delay={0.35}>
-                <div className="mt-6 flex flex-wrap gap-3">
+                <div className="mt-5 flex flex-wrap gap-3">
                   {profile.socialLinks.map((link) => (
                     <MagneticButton
                       key={link.id}
@@ -198,11 +222,11 @@ export function Hero() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, y: 40, rotateY: -8 }}
+            animate={{ opacity: 1, y: 0, rotateY: 0 }}
+            transition={{ delay: 0.4, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             style={{ x: parallaxX, y: parallaxY }}
-            className="hidden lg:block"
+            className="hidden perspective-1000 lg:block"
           >
             <CodeVisual />
           </motion.div>

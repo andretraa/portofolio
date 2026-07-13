@@ -1,5 +1,6 @@
 export type SectionId =
   | "hero"
+  | "marquee"
   | "about"
   | "experience"
   | "projects"
@@ -7,6 +8,7 @@ export type SectionId =
   | "skills"
   | "impact"
   | "journey"
+  | "spotlight"
   | "contact";
 
 export type ContactIcon = "email" | "linkedin" | "github" | "instagram" | "twitter" | "website";
@@ -63,6 +65,8 @@ export interface Profile {
   };
   socialLinks: SocialLink[];
   ctas: HeroCta[];
+  rotatingPhrases: string[];
+  stats: { label: string; value: string }[];
 }
 
 export interface SectionConfig {
@@ -155,6 +159,13 @@ export interface FooterContent {
   madeBy: string;
 }
 
+export interface SpotlightContent {
+  title: string;
+  subtitle: string;
+  ctaLabel: string;
+  ctaHref: string;
+}
+
 export interface Portfolio {
   site: SiteConfig;
   profile: Profile;
@@ -168,6 +179,8 @@ export interface Portfolio {
   impact: ImpactStat[];
   contact: ContactContent;
   footer: FooterContent;
+  spotlight: SpotlightContent;
+  marquee: string[];
   social: {
     github: string;
     linkedin: string;

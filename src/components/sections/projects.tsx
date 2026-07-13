@@ -31,18 +31,55 @@ export function Projects() {
         className={section?.className ?? "section-padding section-glow"}
       >
         <div className="section-container">
-          {heading && (
-            <FadeUp>
-              <SectionHeading
-                label={heading.label}
-                title={heading.title}
-                subtitle={heading.subtitle}
-                align={heading.align}
-              />
-            </FadeUp>
-          )}
+        {heading && (
+          <FadeUp>
+            <SectionHeading
+              label={heading.label}
+              title={heading.title}
+              subtitle={heading.subtitle}
+              align={heading.align}
+            />
+          </FadeUp>
+        )}
 
-          <div className="space-y-20">
+        <FadeUp delay={0.05}>
+          <div className="mb-16 -mx-2 flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide md:gap-5">
+            {projects.map((project, i) => (
+              <button
+                key={`featured-${project.id}`}
+                type="button"
+                onClick={() => openGallery(project, 0)}
+                className="group relative w-64 shrink-0 snap-start overflow-hidden rounded-2xl border border-border bg-surface text-left transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 md:w-72"
+              >
+                {project.images[0] && (
+                  <div className="relative h-36 overflow-hidden">
+                    <Image
+                      src={project.images[0].src}
+                      alt={project.images[0].alt}
+                      fill
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      sizes="288px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
+                  </div>
+                )}
+                <div className="p-4">
+                  <span className="font-mono text-[10px] text-primary">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="mt-1 font-heading font-semibold text-text-primary group-hover:text-primary">
+                    {project.name}
+                  </p>
+                  <p className="mt-0.5 line-clamp-1 text-xs text-text-secondary">
+                    {project.tagline}
+                  </p>
+                </div>
+              </button>
+            ))}
+          </div>
+        </FadeUp>
+
+        <div className="space-y-20">
             {projects.map((project, index) => (
               <FadeUp key={project.id} delay={index * 0.05}>
                 <article

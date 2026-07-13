@@ -70,7 +70,7 @@ export function ProjectModal({
         >
           <motion.button
             type="button"
-            className="absolute inset-0 bg-background/80 backdrop-blur-xl"
+            className="absolute inset-0 bg-background/90 backdrop-blur-2xl"
             onClick={onClose}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -79,12 +79,28 @@ export function ProjectModal({
           />
 
           <motion.div
-            className="relative z-10 flex w-full max-w-6xl flex-col overflow-hidden rounded-3xl border border-border bg-surface shadow-2xl shadow-black/50"
-            initial={{ opacity: 0, scale: 0.92, y: 24 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 16 }}
-            transition={{ type: "spring", stiffness: 320, damping: 28 }}
+            className="relative z-10 flex w-full max-w-6xl flex-col overflow-hidden rounded-3xl border border-border bg-surface shadow-2xl shadow-black/60"
+            initial={{ opacity: 0, scale: 0.88, y: 40, rotateX: 8 }}
+            animate={{ opacity: 1, scale: 1, y: 0, rotateX: 0 }}
+            exit={{ opacity: 0, scale: 0.92, y: 24 }}
+            transition={{ type: "spring", stiffness: 280, damping: 26 }}
           >
+            {total > 1 && (
+              <div className="absolute top-0 right-0 left-0 z-20 flex h-1">
+                {images.map((_, i) => (
+                  <div
+                    key={i}
+                    className="h-full flex-1 transition-all duration-300"
+                    style={{
+                      background:
+                        i === index
+                          ? project.accent
+                          : "rgba(255,255,255,0.08)",
+                    }}
+                  />
+                ))}
+              </div>
+            )}
             <div
               className="absolute inset-x-0 top-0 h-1"
               style={{
@@ -115,10 +131,10 @@ export function ProjectModal({
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={current.id}
-                    initial={{ opacity: 0, x: 40, scale: 0.98 }}
-                    animate={{ opacity: 1, x: 0, scale: 1 }}
-                    exit={{ opacity: 0, x: -40, scale: 0.98 }}
-                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                    initial={{ opacity: 0, scale: 1.05, filter: "blur(8px)" }}
+                    animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, scale: 0.98, filter: "blur(4px)" }}
+                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                     className="absolute inset-0"
                   >
                     <Image

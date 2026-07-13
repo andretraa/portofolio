@@ -47,10 +47,27 @@ export const portfolio: Portfolio = {
       { id: "projects", label: "View Projects", href: "#projects", variant: "primary", showArrow: true },
       { id: "cv", label: "Download CV", href: "/cv.pdf", variant: "secondary", download: true },
     ],
+    rotatingPhrases: [
+      "Healthcare Systems",
+      "Scalable Backends",
+      "Production Deployments",
+      "End-to-End Products",
+    ],
+    stats: [
+      { label: "Years Experience", value: "4+" },
+      { label: "Projects Shipped", value: "5+" },
+      { label: "Tech Domains", value: "3+" },
+    ],
   },
+
+  marquee: [
+    "Laravel", "Golang", "React Native", "Next.js", "PostgreSQL", "Docker",
+    "Healthcare", "SATUSEHAT", "REST API", "System Architecture", "Redis", "Nginx",
+  ],
 
   sections: [
     { id: "hero", enabled: true },
+    { id: "marquee", enabled: true },
     {
       id: "about",
       enabled: true,
@@ -126,6 +143,7 @@ export const portfolio: Portfolio = {
         subtitle: "From intern to senior engineer — building expertise across domains.",
       },
     },
+    { id: "spotlight", enabled: true },
     {
       id: "contact",
       enabled: true,
@@ -139,6 +157,13 @@ export const portfolio: Portfolio = {
       },
     },
   ],
+
+  spotlight: {
+    title: "Let's build something impactful.",
+    subtitle: "From architecture to production — I help teams ship reliable software that users actually love.",
+    ctaLabel: "Start a Conversation",
+    ctaHref: "#contact",
+  },
 
   about: {
     paragraphs: [
