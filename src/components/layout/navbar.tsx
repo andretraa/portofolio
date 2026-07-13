@@ -40,12 +40,12 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-0.5 right-0 left-0 z-50 px-4 pt-3">
+    <header className="fixed top-0 right-0 left-0 z-50 pt-3">
       <nav
-        className={`section-container flex h-14 items-center justify-between rounded-2xl border px-5 transition-all duration-500 ${
+        className={`section-container flex h-14 items-center justify-between rounded-2xl border px-3 transition-all duration-500 sm:px-4 ${
           scrolled
-            ? "border-border bg-background/70 shadow-lg shadow-black/20 backdrop-blur-2xl"
-            : "border-transparent bg-transparent"
+            ? "border-border bg-surface/80 shadow-lg shadow-black/10 backdrop-blur-2xl"
+            : "border-transparent bg-surface/30 backdrop-blur-md"
         }`}
       >
         <Link

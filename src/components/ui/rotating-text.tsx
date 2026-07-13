@@ -21,7 +21,7 @@ export function RotatingText({ phrases, className = "" }: RotatingTextProps) {
 
   return (
     <span
-      className={`relative inline-flex h-[1.4em] min-w-[12ch] overflow-hidden align-bottom ${className}`}
+      className={`relative inline-flex h-[1.4em] overflow-hidden align-bottom ${className}`}
     >
       <AnimatePresence mode="wait">
         <motion.span

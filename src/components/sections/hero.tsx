@@ -102,9 +102,9 @@ export function Hero() {
     >
       <div className="absolute inset-0 grid-bg" />
       <div className="absolute inset-0 mesh-gradient" />
-      <div className="absolute inset-0 aurora-bg opacity-60" />
+      <div className="absolute inset-0 aurora-bg opacity-80" />
       <FloatingParticles />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-transparent to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/40" />
 
       <motion.div
         className="pointer-events-none absolute top-1/3 left-1/4 h-[500px] w-[500px] rounded-full bg-primary/10 blur-[120px]"
@@ -115,7 +115,7 @@ export function Hero() {
         style={{ x: parallaxX, y: parallaxY }}
       />
 
-      <div className="section-container relative z-10 py-32">
+      <div className="section-container relative z-10 py-24 pt-28 sm:py-28 md:py-32">
         <div className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
           <div>
             {profile.available && (
@@ -139,7 +139,7 @@ export function Hero() {
             </FadeUp>
 
             <FadeUp delay={0.15}>
-              <h1 className="font-heading text-5xl font-bold tracking-tight text-glow md:text-6xl lg:text-[5.5rem] lg:leading-[1.05]">
+              <h1 className="font-heading text-[2.75rem] font-bold leading-[1.05] tracking-tight text-glow sm:text-5xl md:text-6xl lg:text-[5.5rem]">
                 <span className="gradient-text">{profile.displayName}</span>
                 <span className="text-primary">.</span>
               </h1>
@@ -161,7 +161,7 @@ export function Hero() {
             </FadeUp>
 
             <FadeUp delay={0.22}>
-              <p className="mt-3 font-heading text-lg text-text-secondary md:text-xl">
+              <p className="mt-3 font-heading text-base text-text-secondary sm:text-lg md:text-xl">
                 Building{" "}
                 <RotatingText phrases={profile.rotatingPhrases} />
               </p>
@@ -174,20 +174,22 @@ export function Hero() {
             </FadeUp>
 
             <FadeUp delay={0.28}>
-              <div className="mt-8 flex flex-wrap gap-6 border-y border-border py-5">
+              <div className="mt-8 grid grid-cols-3 gap-3 border-y border-border py-5 sm:flex sm:gap-8">
                 {profile.stats.map((stat) => (
-                  <div key={stat.label}>
-                    <p className="font-heading text-2xl font-bold text-primary md:text-3xl">
+                  <div key={stat.label} className="text-center sm:text-left">
+                    <p className="font-heading text-xl font-bold text-primary sm:text-2xl md:text-3xl">
                       {stat.value}
                     </p>
-                    <p className="mt-0.5 text-xs text-text-muted">{stat.label}</p>
+                    <p className="mt-0.5 text-[10px] leading-tight text-text-muted sm:text-xs">
+                      {stat.label}
+                    </p>
                   </div>
                 ))}
               </div>
             </FadeUp>
 
             <FadeUp delay={0.3}>
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 {primaryCtas.map((cta) => (
                   <MagneticButton
                     key={cta.id}
@@ -196,6 +198,7 @@ export function Hero() {
                     external={cta.external}
                     download={cta.download}
                     icon={cta.showArrow ? <ArrowIcon /> : undefined}
+                    className="w-full justify-center sm:w-auto"
                   >
                     {cta.label}
                   </MagneticButton>
@@ -205,13 +208,14 @@ export function Hero() {
 
             {profile.socialLinks.length > 0 && (
               <FadeUp delay={0.35}>
-                <div className="mt-5 flex flex-wrap gap-3">
+                <div className="mt-4 flex gap-3">
                   {profile.socialLinks.map((link) => (
                     <MagneticButton
                       key={link.id}
                       href={link.href}
                       variant={link.variant ?? "ghost"}
                       external
+                      className="flex-1 justify-center sm:flex-none sm:w-auto"
                     >
                       {link.label}
                     </MagneticButton>

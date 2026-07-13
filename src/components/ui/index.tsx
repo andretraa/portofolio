@@ -51,7 +51,7 @@ export function MagneticButton({
     <motion.div
       animate={{ x: position.x, y: position.y }}
       transition={{ type: "spring", stiffness: 350, damping: 15 }}
-      className="inline-block"
+      className={`inline-block ${className.includes("w-full") ? "w-full sm:w-auto" : ""}`}
     >
       <Link
         href={href}

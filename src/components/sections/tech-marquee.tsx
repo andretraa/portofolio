@@ -8,7 +8,7 @@ export function TechMarquee() {
 
   return (
     <section
-      className="relative overflow-hidden border-y border-border bg-surface/40 py-5"
+      className="relative overflow-hidden border-y border-border bg-surface/60 py-5"
       aria-label="Technologies"
     >
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-background to-transparent" />
