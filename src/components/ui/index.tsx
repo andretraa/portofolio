@@ -27,7 +27,7 @@ export function MagneticButton({
 
   const variants = {
     primary:
-      "bg-gradient-to-r from-primary to-primary/80 text-white border border-primary/30 shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:brightness-110",
+      "btn-shine bg-gradient-to-r from-primary via-indigo-500 to-primary/80 text-white border border-primary/30 shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:brightness-110",
     secondary:
       "glass-card text-text-primary hover:border-primary/30 hover:bg-surface-elevated",
     ghost:

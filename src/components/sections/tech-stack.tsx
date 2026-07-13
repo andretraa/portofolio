@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui";
-import { getPortfolio, getSectionConfig } from "@/lib/portfolio";
+import { CardSpotlight } from "@/components/ui/card-spotlight";
+import { getPortfolio, getSectionConfig, getSectionNumber } from "@/lib/portfolio";
 import { AnimatedSection, FadeUp } from "@/lib/animations";
 
 export function TechStack() {
@@ -19,6 +20,7 @@ export function TechStack() {
         {heading && (
           <FadeUp>
             <SectionHeading
+              number={getSectionNumber("tech-stack")}
               label={heading.label}
               title={heading.title}
               subtitle={heading.subtitle}
@@ -30,11 +32,7 @@ export function TechStack() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {techStack.map((category, catIndex) => (
             <FadeUp key={category.category} delay={catIndex * 0.06}>
-              <motion.div
-                whileHover={{ y: -4, scale: 1.01 }}
-                transition={{ duration: 0.3 }}
-                className="glass-card group h-full rounded-2xl p-6 transition-all duration-300 hover:border-primary/20"
-              >
+              <CardSpotlight className="glass-card group h-full rounded-2xl p-6 transition-all duration-300 hover:border-primary/20">
                 <div className="mb-5 flex items-center gap-3">
                   <div
                     className="h-2 w-2 rounded-full"
@@ -61,7 +59,7 @@ export function TechStack() {
                     </motion.li>
                   ))}
                 </ul>
-              </motion.div>
+              </CardSpotlight>
             </FadeUp>
           ))}
         </div>

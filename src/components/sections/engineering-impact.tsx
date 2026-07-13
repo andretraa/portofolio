@@ -1,5 +1,6 @@
 import { AnimatedCounter, SectionHeading } from "@/components/ui";
-import { getPortfolio, getSectionConfig } from "@/lib/portfolio";
+import { CardSpotlight } from "@/components/ui/card-spotlight";
+import { getPortfolio, getSectionConfig, getSectionNumber } from "@/lib/portfolio";
 import { AnimatedSection, FadeUp } from "@/lib/animations";
 
 export function EngineeringImpact() {
@@ -16,6 +17,7 @@ export function EngineeringImpact() {
         {heading && (
           <FadeUp>
             <SectionHeading
+              number={getSectionNumber("impact")}
               label={heading.label}
               title={heading.title}
               subtitle={heading.subtitle}
@@ -28,7 +30,7 @@ export function EngineeringImpact() {
           {impact.map((stat, index) => (
             <FadeUp key={stat.id} delay={index * 0.08}>
               <div className="gradient-border group rounded-2xl p-px">
-                <div className="glass-card h-full rounded-2xl p-8 text-center transition-all duration-300 group-hover:border-primary/20">
+                <CardSpotlight className="glass-card h-full rounded-2xl p-8 text-center transition-all duration-300 group-hover:border-primary/20">
                   <p className="font-heading text-4xl font-bold md:text-5xl">
                     <span className="gradient-text">
                       <AnimatedCounter
@@ -41,7 +43,7 @@ export function EngineeringImpact() {
                   <p className="mt-3 text-sm text-text-secondary">
                     {stat.label}
                   </p>
-                </div>
+                </CardSpotlight>
               </div>
             </FadeUp>
           ))}

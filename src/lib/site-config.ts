@@ -3,6 +3,7 @@ export {
   getEnabledSections,
   getNavLinks,
   getSectionConfig,
+  getSectionNumber,
   buildCodeLines,
   getDefaultExperienceId,
   getProjectInitials,

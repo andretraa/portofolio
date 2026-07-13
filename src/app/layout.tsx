@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/footer";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { MouseGlow } from "@/components/ui/mouse-glow";
 import { CustomCursor } from "@/components/ui/custom-cursor";
+import { BackToTop } from "@/components/ui/back-to-top";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -76,6 +77,7 @@ export default function RootLayout({
         <Navbar />
         <main className="w-full overflow-x-hidden">{children}</main>
         <Footer />
+        <BackToTop />
         <Analytics />
       </body>
     </html>

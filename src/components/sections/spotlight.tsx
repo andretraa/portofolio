@@ -9,10 +9,11 @@ export function Spotlight() {
   const { spotlight } = getPortfolio();
 
   return (
-    <section className="relative overflow-hidden py-28 md:py-36">
+    <section className="relative overflow-hidden py-24 md:py-32">
       <FloatingParticles />
-      <div className="absolute inset-0 aurora-bg" />
+      <div className="absolute inset-0 aurora-bg opacity-70" />
       <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
 
       <div className="section-container relative z-10">
         <motion.div

@@ -7,6 +7,7 @@ import {
   getDefaultExperienceId,
   getPortfolio,
   getSectionConfig,
+  getSectionNumber,
 } from "@/lib/portfolio";
 import { AnimatedSection, FadeUp } from "@/lib/animations";
 
@@ -27,6 +28,7 @@ export function Experience() {
         {heading && (
           <FadeUp>
             <SectionHeading
+              number={getSectionNumber("experience")}
               label={heading.label}
               title={heading.title}
               subtitle={heading.subtitle}

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui";
-import { getPortfolio, getSectionConfig } from "@/lib/portfolio";
+import { getPortfolio, getSectionConfig, getSectionNumber } from "@/lib/portfolio";
 import { AnimatedSection, FadeUp } from "@/lib/animations";
 
 export function Journey() {
@@ -13,12 +13,13 @@ export function Journey() {
   return (
     <AnimatedSection
       id="journey"
-      className={section?.className ?? "section-padding section-glow"}
+      className={section?.className ?? "section-padding section-glow section-alt"}
     >
       <div className="section-container">
         {heading && (
           <FadeUp>
             <SectionHeading
+              number={getSectionNumber("journey")}
               label={heading.label}
               title={heading.title}
               subtitle={heading.subtitle}
@@ -27,7 +28,7 @@ export function Journey() {
           </FadeUp>
         )}
 
-        <div className="relative overflow-x-auto pb-4">
+        <div className="mobile-bleed relative overflow-x-auto pb-4">
           <div className="absolute top-[3.25rem] right-8 left-8 hidden h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent md:block" />
 
           <div className="flex min-w-max items-start gap-0 px-2">

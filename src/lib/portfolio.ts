@@ -64,8 +64,24 @@ export function getNavLinks() {
     }));
 }
 
-export function getSectionConfig(id: SectionConfig["id"]) {
+export function getSectionConfig(
+  id: SectionConfig["id"]
+): SectionConfig | undefined {
   return getPortfolio().sections.find((section) => section.id === id);
+}
+
+export function getSectionNumber(id: SectionConfig["id"]): string | undefined {
+  const numbers: Partial<Record<SectionConfig["id"], string>> = {
+    about: "01",
+    experience: "02",
+    projects: "03",
+    "tech-stack": "04",
+    skills: "05",
+    impact: "06",
+    journey: "07",
+    contact: "08",
+  };
+  return numbers[id];
 }
 
 export function getProjectInitials(name: string): string {
