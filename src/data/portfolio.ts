@@ -2,12 +2,12 @@ import type { Portfolio } from "@/types/portfolio";
 
 export const portfolio: Portfolio = {
   site: {
-    name: "Muhamad Ridwan",
-    title: "Muhamad Ridwan | Senior Software Engineer",
+    name: "Andre Tri Rizky Ariyanto",
+    title: "Andre Tri Rizky Ariyanto | Senior Software Engineer",
     description:
-      "Personal portfolio of Muhamad Ridwan, Senior Software Engineer specializing in Laravel, Golang, React Native, backend development, healthcare systems, and scalable web applications.",
+      "Personal portfolio of Andre Tri Rizky Ariyanto, Senior Software Engineer specializing in Laravel, Golang, React Native, backend development, healthcare systems, and scalable web applications.",
     url: "https://portpolio-two-sable.vercel.app",
-    email: "muhamad.ridwan@example.com",
+    email: "andretririzky123@gmail.com",
     cvUrl: "/cv.pdf",
     keywords: [
       "Laravel",
@@ -24,13 +24,13 @@ export const portfolio: Portfolio = {
   },
 
   profile: {
-    firstName: "Ridwan",
-    displayName: "Ridwan",
-    role: "Senior Software Engineer",
-    roleHighlight: "Software Engineer",
+    firstName: "Andre Tri Rizky Ariyanto",
+    displayName: "Andre",
+    role: "Graphic Designer & UI/UX Designer",
+    roleHighlight: "UI/UX Designer",
     tagline:
-      "Building reliable software — from backend architecture to production deployment.",
-    greeting: "Hello, I'm",
+      "I create modern digital experiences that help brands stand out and connect with their audience.",
+    greeting: "Hi, I'm",
     available: true,
     availabilityText: "Available for opportunities",
     codeSnippet: {
@@ -40,42 +40,61 @@ export const portfolio: Portfolio = {
       buildLine: "build: () => deploy()",
     },
     socialLinks: [
-      { id: "github", label: "GitHub", href: "https://github.com/Muhamad-Ridwan18", variant: "ghost" },
-      { id: "linkedin", label: "LinkedIn", href: "https://linkedin.com/in/muhamadridwan", variant: "ghost" },
+      { id: "github", label: "GitHub", href: "https://github.com/andretraa", variant: "ghost" },
+      { id: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/andre-tri-rizky-ariyanto-872203262/", variant: "ghost" },
     ],
     ctas: [
       { id: "projects", label: "View Projects", href: "#projects", variant: "primary", showArrow: true },
       { id: "cv", label: "Download CV", href: "/cv.pdf", variant: "secondary", download: true },
     ],
     rotatingPhrases: [
-      "Healthcare Systems",
-      "Scalable Backends",
-      "Production Deployments",
-      "End-to-End Products",
+      "UI/UX Designs",
+      "Visual Identities",
+      "Brand Concepts",
+      "Digital Artworks",
     ],
     stats: [
       { label: "Years Experience", value: "4+" },
-      { label: "Projects Shipped", value: "5+" },
-      { label: "Tech Domains", value: "3+" },
+      { label: "Creative Projects", value: "20+" },
+      { label: "Happy Clients", value: "15+" },
     ],
   },
 
   marquee: [
-    "Laravel", "Golang", "React Native", "Next.js", "PostgreSQL", "Docker",
-    "Healthcare", "SATUSEHAT", "REST API", "System Architecture", "Redis", "Nginx",
+    "Figma", "Adobe Photoshop", "Adobe Illustrator", "UI/UX Design", "Vector Illustration", "Graphic Design",
+    "Logo Design", "Typography", "Visual Branding", "Wireframing", "Prototyping", "Design Systems",
   ],
 
   sections: [
     { id: "hero", enabled: true },
-    { id: "marquee", enabled: true },
+    { id: "marquee", enabled: false },
     {
       id: "about",
       enabled: true,
       navLabel: "About",
       heading: {
-        label: "About",
-        title: "Who I Am",
-        subtitle: "Engineer yang membangun produk digital dari nol hingga production.",
+        label: "About Me",
+        title: "Designing With Passion, Creating With Purpose",
+      },
+    },
+    {
+      id: "services",
+      enabled: true,
+      navLabel: "Services",
+      heading: {
+        label: "My Services",
+        title: "My Services",
+        align: "center",
+      },
+    },
+    {
+      id: "projects",
+      enabled: true,
+      navLabel: "Portfolio",
+      heading: {
+        label: "Work",
+        title: "Featured Projects",
+        subtitle: "Selected work from my design portfolio.",
       },
     },
     {
@@ -86,23 +105,12 @@ export const portfolio: Portfolio = {
       heading: {
         label: "Career",
         title: "Experience",
-        subtitle: "My professional journey in software engineering.",
-      },
-    },
-    {
-      id: "projects",
-      enabled: true,
-      navLabel: "Projects",
-      heading: {
-        label: "Work",
-        title: "Featured Projects",
-        subtitle:
-          "Selected work spanning healthcare systems, marketplaces, and enterprise applications.",
+        subtitle: "My professional journey over the years.",
       },
     },
     {
       id: "tech-stack",
-      enabled: true,
+      enabled: false,
       navLabel: "Tech Stack",
       className: "section-padding bg-surface/20 section-glow",
       heading: {
@@ -113,7 +121,7 @@ export const portfolio: Portfolio = {
     },
     {
       id: "skills",
-      enabled: true,
+      enabled: false,
       navLabel: "Skills",
       heading: {
         label: "Expertise",
@@ -123,7 +131,7 @@ export const portfolio: Portfolio = {
     },
     {
       id: "impact",
-      enabled: true,
+      enabled: false,
       navLabel: "Impact",
       className: "section-padding bg-surface/20 section-glow",
       heading: {
@@ -135,7 +143,7 @@ export const portfolio: Portfolio = {
     },
     {
       id: "journey",
-      enabled: true,
+      enabled: false,
       navLabel: "Journey",
       heading: {
         label: "Timeline",
@@ -143,7 +151,7 @@ export const portfolio: Portfolio = {
         subtitle: "From intern to senior engineer — building expertise across domains.",
       },
     },
-    { id: "spotlight", enabled: true },
+    { id: "spotlight", enabled: false },
     {
       id: "contact",
       enabled: true,
@@ -167,59 +175,54 @@ export const portfolio: Portfolio = {
 
   about: {
     paragraphs: [
-      "Saya adalah Software Engineer yang fokus pada pengembangan backend, web application, mobile application, dan deployment server.",
-      "Saya senang membangun produk yang scalable, maintainable, dan memiliki dampak nyata bagi pengguna. Pengalaman saya meliputi pengembangan sistem kesehatan, marketplace, company profile, hingga deployment infrastructure.",
+      "Fresh graduate Teknik Informatika dengan passion di bidang Graphic Design, UI/UX Design, dan Content Creation.",
+      "Saya percaya bahwa desain yang baik bukan hanya indah, tetapi juga mampu menyampaikan pesan secara efektif dan memberikan pengalaman terbaik bagi pengguna.",
     ],
     highlights: [
-      { label: "Focus", value: "Backend & Systems" },
-      { label: "Domain", value: "Healthcare & Enterprise" },
-      { label: "Approach", value: "End-to-End Delivery" },
+      { label: "Projects Completed", value: "20+" },
+      { label: "Happy Clients", value: "10+" },
+      { label: "Teknik Informatika", value: "Fresh Graduate" },
+      { label: "Years Experience", value: "1+" },
     ],
   },
 
   experience: [
     {
-      id: "intern",
-      year: "2022",
-      title: "Junior Programmer Intern",
-      company: "First Professional Role",
+      id: "bjb",
+      year: "2023",
+      title: "Bank BJB Syariah",
+      company: "Intern",
       description:
-        "Started my professional journey learning software development fundamentals, collaborating with senior developers, and contributing to real-world projects.",
+        "Magang di divisi SDM sebagai staff administrasi dan data entry.",
       highlights: [
-        "Learned professional development workflows",
-        "Contributed to bug fixes and feature development",
-        "Gained exposure to production codebases",
-      ],
-    },
-    {
-      id: "junior",
-      year: "2025",
-      title: "Junior Software Engineer",
-      company: "Healthcare & Enterprise Systems",
-      description:
-        "Developed and maintained healthcare information systems and electronic medical records, working on backend APIs, integrations, and production deployments.",
-      highlights: [
-        "Backend development with Laravel",
-        "Healthcare system integrations",
-        "API development and maintenance",
-        "Production deployment and monitoring",
-      ],
-    },
-    {
-      id: "senior",
-      year: "2026",
-      title: "Senior Software Engineer",
-      company: "End-to-End Product Development",
-      description:
-        "Leading development across backend, mobile, and infrastructure. Building scalable systems from architecture design to production deployment.",
-      highlights: [
-        "System architecture and design",
-        "Backend with Laravel & Golang",
-        "Mobile development with React Native",
-        "Infrastructure and deployment",
-        "Team collaboration and mentoring",
+        "Administrasi kepegawaian",
+        "Data entry & management",
       ],
       defaultOpen: true,
+    },
+    {
+      id: "freelance",
+      year: "2024",
+      title: "Freelance Designer",
+      company: "Graphic Designer",
+      description:
+        "Mengerjakan berbagai proyek desain untuk klien dari berbagai industri.",
+      highlights: [
+        "Social Media Branding",
+        "Visual Marketing Assets",
+      ],
+    },
+    {
+      id: "uiux",
+      year: "2025",
+      title: "UI/UX Designer",
+      company: "Full Time (Goal)",
+      description:
+        "Berfokus pada perancangan UI/UX dan pengembangan produk digital.",
+      highlights: [
+        "User Interface Design",
+        "Interactive Prototyping",
+      ],
     },
   ],
 
@@ -235,80 +238,75 @@ export const portfolio: Portfolio = {
   projects: [
     {
       id: "jaksimpus",
-      name: "JakSimpus",
-      tagline: "Healthcare Information System",
+      name: "Coffee Shop Branding",
+      tagline: "Branding Design",
       description:
-        "A comprehensive healthcare information system designed to streamline clinic operations, patient management, and medical records for healthcare facilities.",
+        "Desain identitas brand kopi modern lengkap dengan kemasan paper bag, cangkir kopi, kartu nama, dan konsep visual yang minimalis serta estetik.",
       year: "2023",
-      stack: ["Laravel", "MySQL", "Redis"],
-      contributions: [
-        "Backend Development",
-        "API Development",
-        "Bug Fixing",
-        "Deployment",
-        "Maintenance",
-      ],
-      gradient: "from-indigo-500/20 to-cyan-500/20",
-      accent: "#4F46E5",
+      stack: ["Photoshop", "Illustrator", "Mockup Design"],
+      contributions: ["Logo Design", "Packaging Design", "Brand Identity"],
+      gradient: "from-amber-600/20 to-orange-500/20",
+      accent: "#f59e0b",
     },
     {
       id: "klikmedis",
-      name: "KlikMedis",
-      tagline: "Electronic Medical Record",
+      name: "Mobile Banking App",
+      tagline: "UI/UX Design",
       description:
-        "Electronic Medical Record system with integrations to national healthcare platforms, insurance systems, and patient communication channels.",
+        "Perancangan antarmuka (UI/UX) aplikasi perbankan seluler dengan fitur transfer uang instan, grafik analisis pengeluaran bulanan, dan sistem keamanan sidik jari.",
       year: "2024",
-      stack: ["Laravel", "MySQL", "Redis", "SATUSEHAT API"],
-      contributions: [
-        "Backend Development",
-        "SATUSEHAT Integration",
-        "BPJS Integration",
-        "WhatsApp Integration",
-      ],
-      gradient: "from-cyan-500/20 to-emerald-500/20",
-      accent: "#06B6D4",
+      stack: ["Figma", "User Flow", "Prototyping"],
+      contributions: ["UI Design", "UX Wireframing", "Interactive Prototype"],
+      gradient: "from-blue-600/20 to-indigo-500/20",
+      accent: "#3b82f6",
     },
     {
       id: "baytgo",
-      name: "BaytGo",
-      tagline: "Marketplace Muthowif",
+      name: "Instagram Feed Design",
+      tagline: "Social Media",
       description:
-        "A marketplace platform connecting pilgrims with certified muthowif guides, featuring mobile apps and robust backend architecture.",
-      year: "2025",
-      stack: ["Golang", "React Native", "PostgreSQL", "Docker"],
-      contributions: [
-        "Backend Golang",
-        "Mobile React Native",
-        "API Development",
-        "Deployment",
-        "Architecture",
-      ],
-      gradient: "from-violet-500/20 to-indigo-500/20",
-      accent: "#8B5CF6",
+        "Pembuatan layout konten feed Instagram yang konsisten untuk kampanye pemasaran musiman, meningkatkan keterlibatan audiens hingga 45%.",
+      year: "2024",
+      stack: ["Photoshop", "Canva", "Creative Writing"],
+      contributions: ["Content Layout", "Color Palette Setup", "Graphic Assets"],
+      gradient: "from-pink-600/20 to-purple-500/20",
+      accent: "#ec4899",
     },
     {
       id: "webyouneed",
-      name: "WebYouNeed",
-      tagline: "Company Website",
+      name: "Landing Page Website",
+      tagline: "Web Design",
       description:
-        "A modern company website built with full-stack capabilities, optimized for performance and professional brand presentation.",
+        "Desain landing page modern untuk mempromosikan produk digital dengan animasi interaktif, navigasi halus, dan responsivitas penuh di berbagai layar perangkat.",
       year: "2024",
-      stack: ["Laravel", "React", "MySQL", "Nginx"],
-      contributions: ["Backend", "Frontend", "Deployment"],
-      gradient: "from-blue-500/20 to-indigo-500/20",
-      accent: "#3B82F6",
+      stack: ["Figma", "HTML/CSS", "JavaScript"],
+      contributions: ["Web UI Design", "Frontend Development", "UX Flow"],
+      gradient: "from-cyan-600/20 to-blue-500/20",
+      accent: "#06b6d4",
     },
     {
       id: "daksa",
-      name: "Daksa Consultant",
-      tagline: "Company Profile",
+      name: "Fashion Brand Identity",
+      tagline: "Branding Design",
       description:
-        "Professional company profile website with custom CMS, showcasing consulting services and company portfolio.",
-      year: "2023",
-      stack: ["Laravel", "MySQL", "Nginx"],
-      contributions: ["Full Stack Development", "Server Deployment"],
-      gradient: "from-emerald-500/20 to-cyan-500/20",
-      accent: "#10B981",
+        "Desain identitas brand premium 'VELORA' yang bergerak di bidang busana wanita, mencakup perancangan logo, tas belanja, kotak paket, dan label pakaian.",
+      year: "2024",
+      stack: ["Illustrator", "Brand Book", "Visual Concept"],
+      contributions: ["Logo Concept", "Collateral Design", "Packaging Design"],
+      gradient: "from-emerald-600/20 to-teal-500/20",
+      accent: "#10b981",
+    },
+    {
+      id: "packaging-design",
+      name: "Packaging Design",
+      tagline: "Branding Design",
+      description:
+        "Perancangan kemasan produk kardus minimalis 'mats.co' dengan fokus pada estetika ramah lingkungan dan fungsionalitas pengiriman yang aman.",
+      year: "2024",
+      stack: ["Adobe Illustrator", "3D Blender", "Dielines Creation"],
+      contributions: ["Dieline Draft", "Visual Branding", "Packaging Mockup"],
+      gradient: "from-indigo-600/20 to-violet-500/20",
+      accent: "#6366f1",
     },
   ],
 
@@ -322,16 +320,16 @@ export const portfolio: Portfolio = {
   ],
 
   skills: [
-    "Backend Development",
-    "REST API",
-    "System Architecture",
-    "Deployment",
-    "Database Design",
-    "Performance Optimization",
-    "Authentication",
-    "Payment Integration",
-    "WhatsApp Integration",
-    "Healthcare Integration",
+    "CapCut", "Canva", "Figma", "HTML / CSS", "JavaScript", "React"
+  ],
+
+  designerSkills: [
+    { name: "CapCut", level: 95 },
+    { name: "Canva", level: 92 },
+    { name: "Figma", level: 97 },
+    { name: "HTML / CSS", level: 85 },
+    { name: "JavaScript", level: 80 },
+    { name: "React", level: 70 },
   ],
 
   impact: [
@@ -352,18 +350,10 @@ export const portfolio: Portfolio = {
         description: "Send me a message",
       },
       {
-        id: "linkedin",
-        label: "LinkedIn",
-        icon: "linkedin",
-        description: "Connect professionally",
-        external: true,
-      },
-      {
-        id: "github",
-        label: "GitHub",
-        icon: "github",
-        description: "View my code",
-        external: true,
+        id: "whatsapp",
+        label: "WhatsApp",
+        icon: "whatsapp",
+        description: "Let's chat",
       },
       {
         id: "instagram",
@@ -372,19 +362,26 @@ export const portfolio: Portfolio = {
         description: "Follow my journey",
         external: true,
       },
+      {
+        id: "linkedin",
+        label: "LinkedIn",
+        icon: "linkedin",
+        description: "Connect professionally",
+        external: true,
+      },
     ],
   },
 
   footer: {
     brandSuffix: ".",
-    tagline: "Senior Software Engineer",
+    tagline: "Designing with passion, creating with purpose.",
     builtWith: ["Next.js", "TailwindCSS", "Framer Motion"],
-    madeBy: "Ridwan",
+    madeBy: "AT.R",
   },
 
   social: {
-    github: "https://github.com/Muhamad-Ridwan18",
-    linkedin: "https://linkedin.com/in/muhamadridwan",
-    instagram: "https://instagram.com/muhamadridwan",
+    github: "https://github.com/andretraa",
+    linkedin: "https://linkedin.com/in/andretraa",
+    instagram: "https://instagram.com/_andretraa",
   },
 };

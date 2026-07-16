@@ -1,7 +1,7 @@
 # Personal Portfolio Website
 ## Project Requirement Document (PRD)
 
-**Owner:** Muhamad Ridwan  
+**Owner:** Andre Tri Rizky Ariyanto  
 **Role:** Senior Software Engineer  
 **Version:** 1.0
 
@@ -47,7 +47,7 @@ Inspirasi:
 
 Website harus dapat menjawab pertanyaan berikut hanya dalam waktu 30 detik.
 
-- Siapa Ridwan?
+- Siapa Andre?
 - Apa yang dia kerjakan?
 - Seberapa berpengalaman dia?
 - Project apa saja yang pernah dibuat?
@@ -198,7 +198,7 @@ Isi
 
 Hello,
 
-I'm Ridwan.
+I'm Andre.
 
 Senior Software Engineer
 
@@ -500,7 +500,7 @@ TailwindCSS
 
 Framer Motion
 
-Made with ❤️ by Ridwan
+Made with ❤️ by Andre
 
 ---
 
@@ -582,11 +582,11 @@ Best Practices
 
 Title
 
-Muhamad Ridwan | Senior Software Engineer
+Andre Tri Rizky Ariyanto | Senior Software Engineer
 
 Description
 
-Personal portfolio of Muhamad Ridwan, Senior Software Engineer specializing in Laravel, Golang, React Native, backend development, healthcare systems, and scalable web applications.
+Personal portfolio of Andre Tri Rizky Ariyanto, Senior Software Engineer specializing in Laravel, Golang, React Native, backend development, healthcare systems, and scalable web applications.
 
 Keywords
 

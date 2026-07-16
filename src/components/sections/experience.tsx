@@ -1,129 +1,109 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
 import { SectionHeading } from "@/components/ui";
-import {
-  getDefaultExperienceId,
-  getPortfolio,
-  getSectionConfig,
-  getSectionNumber,
-} from "@/lib/portfolio";
+import { getPortfolio, getSectionConfig, getSectionNumber } from "@/lib/portfolio";
 import { AnimatedSection, FadeUp } from "@/lib/animations";
 
 export function Experience() {
   const { experience } = getPortfolio();
   const section = getSectionConfig("experience");
-  const heading = section?.heading;
-  const [activeId, setActiveId] = useState<string | null>(
-    getDefaultExperienceId()
-  );
+  const heading = section?.heading ?? {
+    label: "Career",
+    title: "My Experience",
+    subtitle: "My professional journey over the years.",
+  };
+
+  const getTimelineIcon = (index: number) => {
+    switch (index) {
+      case 0: // 2023: Intern
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-5 w-5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 .621-.504 1.125-1.125 1.125H4.875A1.125 1.125 0 0 1 3.75 18.4V14.15m16.5 0a9.003 9.003 0 0 0-16.5 0m16.5 0a9 9 0 0 0-16.5 0M15 11.25V4.875A1.125 1.125 0 0 0 13.875 3.75h-3.75A1.125 1.125 0 0 0 9 4.875v6.375m6 0H9" />
+          </svg>
+        );
+      case 1: // 2024: Freelance
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-5 w-5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25A2.25 2.25 0 0 1 5.25 3h13.5A2.25 2.25 0 0 1 21 5.25Z" />
+          </svg>
+        );
+      default: // 2025: UIUX Goal
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-5 w-5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+          </svg>
+        );
+    }
+  };
+
+  const getTimelineColor = (index: number) => {
+    switch (index) {
+      case 0:
+        return "bg-indigo-600 text-white shadow-indigo-600/30";
+      case 1:
+        return "bg-blue-600 text-white shadow-blue-600/30";
+      default:
+        return "bg-teal-500 text-white shadow-teal-500/30";
+    }
+  };
 
   return (
     <AnimatedSection
       id="experience"
-      className={section?.className ?? "section-padding section-glow"}
+      className="section-padding section-glow border-t border-border/20"
     >
       <div className="section-container">
-        {heading && (
-          <FadeUp>
-            <SectionHeading
-              number={getSectionNumber("experience")}
-              label={heading.label}
-              title={heading.title}
-              subtitle={heading.subtitle}
-              align={heading.align}
-            />
-          </FadeUp>
-        )}
+        <FadeUp>
+          <SectionHeading
+            number={getSectionNumber("experience") ?? "05"}
+            label={heading.label}
+            title="My Experience"
+            subtitle={heading.subtitle}
+            align="center"
+          />
+        </FadeUp>
 
-        <div className="relative mx-auto max-w-3xl">
+        <div className="relative mt-16 mx-auto max-w-5xl">
+          {/* Horizontal connecting line on desktop */}
           <div
-            className="absolute top-0 bottom-0 left-6 w-px bg-gradient-to-b from-primary/50 via-secondary/30 to-transparent md:left-1/2 md:-translate-x-px"
+            className="hidden md:block absolute top-[28px] left-[10%] right-[10%] h-[2.5px] bg-gradient-to-r from-indigo-500 via-blue-500 to-teal-400 opacity-50"
             aria-hidden="true"
           />
 
-          {experience.map((item, index) => {
-            const isActive = activeId === item.id;
-            return (
-              <FadeUp key={item.id} delay={index * 0.1}>
-                <div className="relative mb-10 last:mb-0">
-                  <div
-                    className={`absolute left-6 z-10 h-4 w-4 -translate-x-1/2 rounded-full border-2 transition-all duration-300 md:left-1/2 ${
-                      isActive
-                        ? "border-primary bg-primary shadow-lg shadow-primary/40"
-                        : "border-border bg-background"
-                    }`}
-                  />
+          <div className="grid gap-10 md:grid-cols-3 md:gap-6 relative z-10">
+            {experience.map((item, index) => (
+              <FadeUp key={item.id} delay={index * 0.15}>
+                <div className="flex flex-col items-center text-center">
+                  
+                  {/* Timeline Indicator Ring & Icon */}
+                  <div className={`flex h-14 w-14 items-center justify-center rounded-full border-4 border-background shadow-lg transition-transform duration-300 hover:scale-115 ${getTimelineColor(index)}`}>
+                    {getTimelineIcon(index)}
+                  </div>
 
-                  <button
-                    type="button"
-                    className={`ml-14 w-full rounded-2xl border p-6 text-left transition-all duration-300 md:ml-0 md:w-[calc(50%-2.5rem)] ${
-                      index % 2 === 0 ? "md:mr-auto" : "md:ml-auto"
-                    } ${
-                      isActive
-                        ? "glass-card border-primary/30 glow-primary"
-                        : "border-border bg-surface/40 hover:border-primary/20 hover:bg-surface/60"
-                    }`}
-                    onClick={() =>
-                      setActiveId(isActive ? null : item.id)
-                    }
-                    aria-expanded={isActive}
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <span className="font-mono text-sm font-medium text-primary">
-                          {item.year}
-                        </span>
-                        <h3 className="mt-1 font-heading text-lg font-semibold text-text-primary">
-                          {item.title}
-                        </h3>
-                        <p className="mt-0.5 text-sm text-text-secondary">
-                          {item.company}
-                        </p>
-                      </div>
-                      <motion.span
-                        animate={{ rotate: isActive ? 180 : 0 }}
-                        className="mt-1 text-text-muted"
-                      >
-                        ▾
-                      </motion.span>
-                    </div>
+                  {/* Year Tag */}
+                  <span className="mt-5 font-mono text-sm font-bold text-primary">
+                    {item.year}
+                  </span>
 
-                    <AnimatePresence>
-                      {isActive && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{
-                            duration: 0.35,
-                            ease: [0.22, 1, 0.36, 1],
-                          }}
-                          className="overflow-hidden"
-                        >
-                          <p className="mt-4 text-sm leading-relaxed text-text-secondary">
-                            {item.description}
-                          </p>
-                          <ul className="mt-4 space-y-2.5">
-                            {item.highlights.map((highlight) => (
-                              <li
-                                key={highlight}
-                                className="flex items-start gap-3 text-sm text-text-secondary"
-                              >
-                                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-secondary" />
-                                {highlight}
-                              </li>
-                            ))}
-                          </ul>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </button>
+                  {/* Job/School Title */}
+                  <h3 className="mt-2 font-heading text-lg font-bold text-text-primary">
+                    {item.title}
+                  </h3>
+
+                  {/* Subtitle / Company */}
+                  <p className="mt-1 font-heading text-xs font-semibold text-text-muted">
+                    {item.company}
+                  </p>
+
+                  {/* Task Description Paragraph */}
+                  <p className="mt-4 max-w-[280px] text-xs leading-relaxed text-text-secondary">
+                    {item.description}
+                  </p>
+
                 </div>
               </FadeUp>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </div>
     </AnimatedSection>

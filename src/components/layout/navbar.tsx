@@ -53,14 +53,14 @@ export function Navbar() {
           className="group flex items-center gap-2 font-heading text-lg font-bold"
           aria-label="Back to top"
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-secondary text-xs font-bold text-white">
-            MR
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-secondary text-sm font-black text-white">
+            A
           </span>
           <span className="text-text-primary sm:inline">
-            Ridwan<span className="text-primary">.</span>
+            Andre<span className="text-primary">.</span>
           </span>
         </Link>
-
+ 
         <ul className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => {
             const id = link.href.replace("#", "");
@@ -88,14 +88,18 @@ export function Navbar() {
             );
           })}
         </ul>
-
+ 
         <div className="flex items-center gap-3">
-          <Link
-            href="#contact"
-            className="hidden rounded-xl bg-gradient-to-r from-primary to-primary/80 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-primary/20 transition-all hover:brightness-110 md:inline-flex"
+          <a
+            href="/cv.pdf"
+            download
+            className="hidden items-center gap-1.5 rounded-xl bg-gradient-to-r from-primary to-secondary px-4 py-2 text-xs font-bold text-white shadow-lg shadow-primary/25 transition-all hover:scale-102 md:inline-flex"
           >
-            Let&apos;s Talk
-          </Link>
+            <span>Download CV</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-3.5 w-3.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+          </a>
 
           <button
             type="button"

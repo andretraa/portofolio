@@ -73,13 +73,10 @@ export function getSectionConfig(
 export function getSectionNumber(id: SectionConfig["id"]): string | undefined {
   const numbers: Partial<Record<SectionConfig["id"], string>> = {
     about: "01",
-    experience: "02",
+    services: "02",
     projects: "03",
-    "tech-stack": "04",
-    skills: "05",
-    impact: "06",
-    journey: "07",
-    contact: "08",
+    experience: "04",
+    contact: "05",
   };
   return numbers[id];
 }

@@ -2,6 +2,7 @@ export type SectionId =
   | "hero"
   | "marquee"
   | "about"
+  | "services"
   | "experience"
   | "projects"
   | "tech-stack"
@@ -11,7 +12,7 @@ export type SectionId =
   | "spotlight"
   | "contact";
 
-export type ContactIcon = "email" | "linkedin" | "github" | "instagram" | "twitter" | "website";
+export type ContactIcon = "email" | "linkedin" | "github" | "instagram" | "twitter" | "website" | "whatsapp";
 export type ButtonVariant = "primary" | "secondary" | "ghost";
 
 export interface SectionHeading {
@@ -176,6 +177,7 @@ export interface Portfolio {
   projects: Project[];
   techStack: TechCategory[];
   skills: string[];
+  designerSkills?: { name: string; level: number }[];
   impact: ImpactStat[];
   contact: ContactContent;
   footer: FooterContent;

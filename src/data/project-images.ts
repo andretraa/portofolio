@@ -36,6 +36,11 @@ export const projectImageSets: Record<string, ProjectImage[]> = {
     { id: "team", alt: "Team Section", caption: "Consulting team presentation" },
     { id: "contact", alt: "Contact Page", caption: "Lead generation contact form" },
   ]),
+  "packaging-design": projectImages("daksa", [
+    { id: "profile", alt: "Packaging Design", caption: "Packaging box design" },
+    { id: "team", alt: "Details view", caption: "Box layout print design" },
+    { id: "contact", alt: "3D render", caption: "3D packaging mockup render" },
+  ]),
 };
 
 export function attachProjectImages(

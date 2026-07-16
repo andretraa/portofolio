@@ -1,57 +1,85 @@
 "use client";
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import Image from "next/image";
 import { ArrowIcon, MagneticButton } from "@/components/ui";
 import { FloatingParticles } from "@/components/ui/floating-particles";
-import { RotatingText } from "@/components/ui/rotating-text";
-import { MobileCodeCard } from "@/components/sections/mobile-code-card";
-import { buildCodeLines, getPortfolio } from "@/lib/portfolio";
+import { getPortfolio } from "@/lib/portfolio";
 import { FadeUp } from "@/lib/animations";
 
-function CodeVisual() {
-  const { profile } = getPortfolio();
-  const lines = buildCodeLines();
+function DesignShowcaseDeck() {
+  const cards = [
+    {
+      id: "jaksimpus",
+      title: "JakSimpus - UI/UX Design",
+      src: "/projects/jaksimpus/dashboard.svg",
+      rotate: -4,
+      scale: 0.95,
+      y: -10,
+      x: -15,
+    },
+    {
+      id: "baytgo",
+      title: "BaytGo - Mobile App",
+      src: "/projects/baytgo/mobile.svg",
+      rotate: 4,
+      scale: 0.95,
+      y: 10,
+      x: 15,
+    },
+    {
+      id: "webyouneed",
+      title: "WebYouNeed - Web Branding",
+      src: "/projects/webyouneed/homepage.svg",
+      rotate: 0,
+      scale: 1,
+      y: 0,
+      x: 0,
+    },
+  ];
 
   return (
-    <div className="relative animate-float perspective-1000">
-      <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-primary/25 via-transparent to-secondary/20 blur-3xl animate-pulse-glow" />
-      <div className="shine-border relative overflow-hidden rounded-2xl">
-        <div className="relative overflow-hidden rounded-2xl border border-border/80 bg-surface/90 p-6 backdrop-blur-sm glow-primary">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
-          <div className="relative">
-            <div className="mb-5 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="h-3 w-3 rounded-full bg-red-500/70" />
-                <div className="h-3 w-3 rounded-full bg-yellow-500/70" />
-                <div className="h-3 w-3 rounded-full bg-green-500/70" />
-              </div>
-              <span className="font-mono text-xs text-text-muted">
-                {profile.codeSnippet.fileName}
+    <div className="relative flex h-[320px] w-full items-center justify-center sm:h-[400px] lg:h-[450px]">
+      <div className="absolute -inset-10 rounded-full bg-gradient-to-br from-primary/20 via-secondary/15 to-transparent blur-[80px]" />
+      
+      <div className="relative h-full w-full max-w-[280px] sm:max-w-[340px]">
+        {cards.map((card, index) => (
+          <motion.div
+            key={card.id}
+            className="absolute inset-0 origin-center rounded-2xl border border-border bg-surface p-2 shadow-2xl transition-all cursor-pointer"
+            style={{ zIndex: index }}
+            initial={{ opacity: 0, scale: 0.8, rotate: card.rotate }}
+            animate={{ opacity: 1, scale: card.scale, rotate: card.rotate, x: card.x, y: card.y }}
+            whileHover={{
+              scale: 1.05,
+              rotate: 0,
+              x: 0,
+              y: -15,
+              zIndex: 10,
+              transition: { duration: 0.3 }
+            }}
+            transition={{ delay: 0.5 + index * 0.15, type: "spring", stiffness: 120 }}
+          >
+            <div className="relative h-[85%] w-full overflow-hidden rounded-xl bg-background border border-border/50">
+              <Image
+                src={card.src}
+                alt={card.title}
+                fill
+                className="object-cover object-top"
+                sizes="(max-w-768px) 100vw, 400px"
+                priority={index === 2}
+              />
+            </div>
+            <div className="flex h-[15%] items-center justify-between px-2">
+              <span className="font-heading text-[10px] font-semibold text-text-primary sm:text-xs">
+                {card.title}
+              </span>
+              <span className="rounded-full bg-primary/10 px-1.5 py-0.5 font-mono text-[8px] font-medium text-primary">
+                Design
               </span>
             </div>
-            <pre className="font-mono text-[13px] leading-relaxed">
-              {lines.map((line, i) => (
-                <motion.div
-                  key={`${line.content}-${i}`}
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.6 + i * 0.07, duration: 0.4 }}
-                  className="flex"
-                >
-                  <span className="mr-4 w-5 shrink-0 text-right text-text-muted/40 select-none">
-                    {i + 1}
-                  </span>
-                  <span style={{ paddingLeft: `${line.indent * 1.25}rem` }}>
-                    <span className={line.color}>{line.content}</span>
-                    {i === lines.length - 1 && (
-                      <span className="ml-0.5 inline-block h-4 w-2 bg-primary/80 cursor-blink" />
-                    )}
-                  </span>
-                </motion.div>
-              ))}
-            </pre>
-          </div>
-        </div>
+          </motion.div>
+        ))}
       </div>
     </div>
   );
@@ -139,12 +167,7 @@ export function Hero() {
               </p>
             </FadeUp>
 
-            <FadeUp delay={0.22}>
-              <p className="mt-2 font-heading text-sm text-text-secondary sm:text-base md:text-lg">
-                Building{" "}
-                <RotatingText phrases={profile.rotatingPhrases} />
-              </p>
-            </FadeUp>
+
 
             <FadeUp delay={0.25}>
               <p className="mt-5 text-sm leading-relaxed text-text-secondary sm:text-base md:text-lg">
@@ -153,21 +176,6 @@ export function Hero() {
             </FadeUp>
 
             <FadeUp delay={0.28}>
-              <div className="mt-7 grid grid-cols-3 gap-2.5 sm:gap-3">
-                {profile.stats.map((stat) => (
-                  <div key={stat.label} className="stat-card text-center sm:text-left">
-                    <p className="font-heading text-lg font-bold text-primary sm:text-xl md:text-2xl">
-                      {stat.value}
-                    </p>
-                    <p className="mt-1 text-[9px] leading-tight text-text-muted sm:text-[10px] md:text-xs">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </FadeUp>
-
-            <FadeUp delay={0.3}>
               <div className="mt-7 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:gap-3">
                 {primaryCtas.map((cta) => (
                   <MagneticButton
@@ -186,7 +194,7 @@ export function Hero() {
             </FadeUp>
 
             {profile.socialLinks.length > 0 && (
-              <FadeUp delay={0.35}>
+              <FadeUp delay={0.32}>
                 <div className="mt-3 flex gap-2.5 sm:gap-3">
                   {profile.socialLinks.map((link) => (
                     <MagneticButton
@@ -203,7 +211,6 @@ export function Hero() {
               </FadeUp>
             )}
 
-            <MobileCodeCard />
           </div>
 
           <motion.div
@@ -211,11 +218,27 @@ export function Hero() {
             animate={{ opacity: 1, y: 0, rotateY: 0 }}
             transition={{ delay: 0.4, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             style={{ x: parallaxX, y: parallaxY }}
-            className="hidden perspective-1000 lg:block"
+            className="perspective-1000 block w-full lg:w-auto mt-8 lg:mt-0"
           >
-            <CodeVisual />
+            <DesignShowcaseDeck />
           </motion.div>
         </div>
+
+        {/* Stats Dashboard Bar */}
+        <FadeUp delay={0.38}>
+          <div className="mt-12 grid grid-cols-3 gap-4 rounded-2xl border border-border bg-surface/35 p-5 backdrop-blur-sm sm:gap-6 md:p-6 lg:mt-16">
+            {profile.stats.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <p className="font-heading text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent sm:text-3xl md:text-4xl">
+                  {stat.value}
+                </p>
+                <p className="mt-1.5 font-mono text-[9px] tracking-widest text-text-muted uppercase sm:text-[10px] md:text-xs">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </FadeUp>
       </div>
 
       <motion.div

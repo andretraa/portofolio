@@ -1,6 +1,7 @@
 import type { SectionId } from "@/types/portfolio";
 import { Hero } from "./hero";
 import { About } from "./about";
+import { Services } from "./services";
 import { Experience } from "./experience";
 import { Projects } from "./projects";
 import { TechStack } from "./tech-stack";
@@ -15,6 +16,7 @@ export const sectionRegistry: Record<SectionId, React.ComponentType> = {
   hero: Hero,
   marquee: TechMarquee,
   about: About,
+  services: Services,
   experience: Experience,
   projects: Projects,
   "tech-stack": TechStack,
