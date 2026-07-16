@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
 import { ArrowIcon, MagneticButton } from "@/components/ui";
@@ -13,72 +14,111 @@ function DesignShowcaseDeck() {
       id: "jaksimpus",
       title: "Coffee Shop - Brand Identity",
       src: "/projects/jaksimpus/dashboard.png",
-      rotate: -4,
-      scale: 0.95,
-      y: -10,
-      x: -15,
     },
     {
       id: "klikmedis",
       title: "Mobile Banking - UI/UX App",
       src: "/projects/klikmedis/emr.png",
-      rotate: 4,
-      scale: 0.95,
-      y: 10,
-      x: 15,
     },
     {
       id: "webyouneed",
       title: "Landing Page - Web Design",
       src: "/projects/webyouneed/homepage.png",
-      rotate: 0,
-      scale: 1,
-      y: 0,
-      x: 0,
     },
   ];
 
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % cards.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [cards.length]);
+
+  const getCardStyle = (index: number) => {
+    const position = (index - activeIndex + cards.length) % cards.length;
+    
+    if (position === 0) {
+      return {
+        zIndex: 3,
+        rotate: 0,
+        scale: 1,
+        x: 0,
+        y: 0,
+        opacity: 1,
+      };
+    } else if (position === 1) {
+      return {
+        zIndex: 2,
+        rotate: 6,
+        scale: 0.92,
+        x: 35,
+        y: 15,
+        opacity: 0.85,
+      };
+    } else {
+      return {
+        zIndex: 1,
+        rotate: -6,
+        scale: 0.84,
+        x: -35,
+        y: 30,
+        opacity: 0.65,
+      };
+    }
+  };
+
   return (
-    <div className="relative flex h-[320px] w-full items-center justify-center sm:h-[400px] lg:h-[450px]">
-      <div className="absolute -inset-10 rounded-full bg-gradient-to-br from-primary/20 via-secondary/15 to-transparent blur-[80px]" />
+    <div className="relative flex flex-col items-center justify-center h-[380px] sm:h-[460px] lg:h-[500px] w-full">
+      <div className="absolute -inset-10 rounded-full bg-gradient-to-br from-primary/15 via-secondary/10 to-transparent blur-[80px]" />
       
-      <div className="relative h-full w-full max-w-[280px] sm:max-w-[340px]">
-        {cards.map((card, index) => (
-          <motion.div
-            key={card.id}
-            className="absolute inset-0 origin-center rounded-2xl border border-border bg-surface p-2 shadow-2xl transition-all cursor-pointer"
-            style={{ zIndex: index }}
-            initial={{ opacity: 0, scale: 0.8, rotate: card.rotate }}
-            animate={{ opacity: 1, scale: card.scale, rotate: card.rotate, x: card.x, y: card.y }}
-            whileHover={{
-              scale: 1.05,
-              rotate: 0,
-              x: 0,
-              y: -15,
-              zIndex: 10,
-              transition: { duration: 0.3 }
-            }}
-            transition={{ delay: 0.5 + index * 0.15, type: "spring", stiffness: 120 }}
-          >
-            <div className="relative h-[85%] w-full overflow-hidden rounded-xl bg-background border border-border/50">
-              <Image
-                src={card.src}
-                alt={card.title}
-                fill
-                className="object-cover object-top"
-                sizes="(max-w-768px) 100vw, 400px"
-                priority={index === 2}
-              />
-            </div>
-            <div className="flex h-[15%] items-center justify-between px-2">
-              <span className="font-heading text-[10px] font-semibold text-text-primary sm:text-xs">
-                {card.title}
-              </span>
-              <span className="rounded-full bg-primary/10 px-1.5 py-0.5 font-mono text-[8px] font-medium text-primary">
-                Design
-              </span>
-            </div>
-          </motion.div>
+      <div className="relative h-[290px] w-full max-w-[270px] sm:h-[360px] sm:max-w-[320px]">
+        {cards.map((card, index) => {
+          const style = getCardStyle(index);
+          return (
+            <motion.div
+              key={card.id}
+              className="absolute inset-0 origin-center rounded-2xl border border-border bg-surface p-2 shadow-2xl transition-all cursor-pointer select-none"
+              animate={style}
+              transition={{ type: "spring", stiffness: 100, damping: 18 }}
+              onClick={() => setActiveIndex(index)}
+            >
+              <div className="relative h-[82%] w-full overflow-hidden rounded-xl bg-background border border-border/50">
+                <Image
+                  src={card.src}
+                  alt={card.title}
+                  fill
+                  className="object-cover object-top pointer-events-none"
+                  sizes="(max-w-768px) 100vw, 400px"
+                  priority={index === 0}
+                />
+              </div>
+              <div className="flex h-[18%] items-center justify-between px-2.5">
+                <span className="font-heading text-[10px] font-bold text-text-primary sm:text-xs">
+                  {card.title}
+                </span>
+                <span className="rounded-full bg-primary/10 px-2 py-0.5 font-mono text-[8px] font-medium text-primary">
+                  Design
+                </span>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      <div className="mt-8 flex gap-2.5 z-20">
+        {cards.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setActiveIndex(index)}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              activeIndex === index
+                ? "w-6 bg-primary shadow-sm shadow-primary/45"
+                : "w-2 bg-text-muted/40 hover:bg-text-muted/70"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
         ))}
       </div>
     </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
 import { getPortfolio, getSectionConfig } from "@/lib/portfolio";
 import { AnimatedSection, FadeUp } from "@/lib/animations";
@@ -45,19 +46,22 @@ export function About() {
     >
       <div className="section-container">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16 items-center">
-          
+
           {/* Left Column: Portrait Squircle Frame */}
           <div className="lg:col-span-5 flex justify-center">
-            <FadeUp>
-              <div className="relative aspect-square w-full max-w-[320px] rounded-[36px] overflow-hidden bg-gradient-to-br from-primary via-indigo-600 to-secondary p-[3px] shadow-2xl">
+            <FadeUp className="w-full flex justify-center">
+              <div className="relative aspect-[3/4] w-full max-w-[320px] rounded-[36px] overflow-hidden bg-gradient-to-br from-primary via-indigo-600 to-secondary p-[3px] shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-30 blur-2xl animate-pulse-glow" />
-                <div className="relative h-full w-full rounded-[33px] bg-background overflow-hidden flex items-center justify-center">
-                  <svg className="w-2/3 h-2/3 text-primary/30 animate-float" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={0.8}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                  </svg>
-                  <div className="absolute bottom-4 left-4 right-4 flex justify-between font-mono text-[9px] text-text-muted/40">
-                    <span>[DESIGN_PORTRAIT]</span>
-                    <span>AT.R_01</span>
+                <div className="relative h-full w-full rounded-[33px] bg-surface-elevated overflow-hidden flex items-center justify-center">
+                  <Image
+                    src="/about-photo.jpg"
+                    alt="Andre Tri Rizky Ariyanto"
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-w-768px) 100vw, 320px"
+                    priority
+                  />
+                  <div className="absolute bottom-4 left-4 right-4 flex justify-between font-mono text-[9px] text-white bg-background/40 backdrop-blur-[2px] px-2 py-1 rounded-md">
                   </div>
                 </div>
               </div>
