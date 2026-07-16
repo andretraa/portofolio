@@ -8,7 +8,7 @@ export const portfolio: Portfolio = {
       "Personal portfolio of Andre Tri Rizky Ariyanto, Senior Software Engineer specializing in Laravel, Golang, React Native, backend development, healthcare systems, and scalable web applications.",
     url: "https://portpolio-two-sable.vercel.app",
     email: "andretririzky123@gmail.com",
-    cvUrl: "/cv.pdf",
+    cvUrl: "/porto_andre.pdf",
     keywords: [
       "Laravel",
       "Golang",
