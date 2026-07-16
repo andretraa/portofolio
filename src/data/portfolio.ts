@@ -54,20 +54,20 @@ export const portfolio: Portfolio = {
       "Digital Artworks",
     ],
     stats: [
-      { label: "Years Experience", value: "4+" },
-      { label: "Creative Projects", value: "20+" },
+      { label: "Years Experience", value: "2" },
+      { label: "Creative Projects", value: "20  +" },
       { label: "Happy Clients", value: "15+" },
     ],
   },
 
   marquee: [
-    "Figma", "Adobe Photoshop", "Adobe Illustrator", "UI/UX Design", "Vector Illustration", "Graphic Design",
-    "Logo Design", "Typography", "Visual Branding", "Wireframing", "Prototyping", "Design Systems",
+    "Figma", "Canva", "UI/UX Design", "Graphic Design", "Capcut", "Video Editing", "Social Media Design",
+    "Logo Design", "Typography", "Content Planner", "Writting", "Prototyping", "Design Systems",
   ],
 
   sections: [
     { id: "hero", enabled: true },
-    { id: "marquee", enabled: false },
+    { id: "marquee", enabled: true },
     {
       id: "about",
       enabled: true,
@@ -175,7 +175,7 @@ export const portfolio: Portfolio = {
 
   about: {
     paragraphs: [
-      "Fresh graduate Teknik Informatika dengan passion di bidang Graphic Design, UI/UX Design, dan Content Creation.",
+      "Fresh graduate Teknik Informatika dengan passion di bidang Graphic Design, UI/UX Design, Editing dan Content Creator.",
       "Saya percaya bahwa desain yang baik bukan hanya indah, tetapi juga mampu menyampaikan pesan secara efektif dan memberikan pengalaman terbaik bagi pengguna.",
     ],
     highlights: [
@@ -188,37 +188,37 @@ export const portfolio: Portfolio = {
 
   experience: [
     {
-      id: "bjb",
-      year: "2023",
-      title: "Bank BJB Syariah",
+      id: "biofarma",
+      year: "2019",
+      title: "PT. BIOFARMA PERSERO",
       company: "Intern",
       description:
-        "Magang di divisi SDM sebagai staff administrasi dan data entry.",
+        "Magang di divisi IT sebagai staff IT support.",
       highlights: [
-        "Administrasi kepegawaian",
+        "Maintenance Jaringan",
         "Data entry & management",
       ],
       defaultOpen: true,
     },
     {
-      id: "freelance",
-      year: "2024",
-      title: "Freelance Designer",
-      company: "Graphic Designer",
+      id: "bjb",
+      year: "2025",
+      title: "Bank BJB Syariah",
+      company: "Intern",
       description:
-        "Mengerjakan berbagai proyek desain untuk klien dari berbagai industri.",
+        "Magang di Divisi SDM sebagai staff administrasi dan data entry.",
       highlights: [
-        "Social Media Branding",
-        "Visual Marketing Assets",
+        "Administrasi Kepegawaian",
+        "Data entry & management",
       ],
     },
     {
-      id: "uiux",
-      year: "2025",
-      title: "UI/UX Designer",
-      company: "Full Time (Goal)",
+      id: "sosial media specialist",
+      year: "2026 - Now",
+      title: "Klikmedis",
+      company: "Work Full Time",
       description:
-        "Berfokus pada perancangan UI/UX dan pengembangan produk digital.",
+        "Berfokus pada planning content sosial media sekaligus membuat content video , editing dan design ",
       highlights: [
         "User Interface Design",
         "Interactive Prototyping",
@@ -325,8 +325,8 @@ export const portfolio: Portfolio = {
 
   designerSkills: [
     { name: "CapCut", level: 95 },
-    { name: "Canva", level: 92 },
-    { name: "Figma", level: 97 },
+    { name: "Canva", level: 95 },
+    { name: "Figma", level: 92 },
     { name: "HTML / CSS", level: 85 },
     { name: "JavaScript", level: 80 },
     { name: "React", level: 70 },
@@ -376,7 +376,7 @@ export const portfolio: Portfolio = {
     brandSuffix: ".",
     tagline: "Designing with passion, creating with purpose.",
     builtWith: ["Next.js", "TailwindCSS", "Framer Motion"],
-    madeBy: "AT.R",
+    madeBy: "Andre Tri Rizky",
   },
 
   social: {

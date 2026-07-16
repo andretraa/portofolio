@@ -79,7 +79,7 @@ export function ProjectModal({
           />
 
           <motion.div
-            className="relative z-10 flex w-full max-w-6xl flex-col overflow-hidden rounded-3xl border border-border bg-surface shadow-2xl shadow-black/60"
+            className="relative z-10 flex w-full max-w-3xl max-h-[90vh] flex-col overflow-y-auto rounded-3xl border border-border bg-surface shadow-2xl shadow-black/60 scrollbar-none"
             initial={{ opacity: 0, scale: 0.88, y: 40, rotateX: 8 }}
             animate={{ opacity: 1, scale: 1, y: 0, rotateX: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: 24 }}
@@ -108,7 +108,7 @@ export function ProjectModal({
               }}
             />
 
-            <div className="flex items-center justify-between border-b border-border px-5 py-4 md:px-6">
+            <div className="flex items-center justify-between shrink-0 border-b border-border px-5 py-4 md:px-6">
               <div>
                 <p className="font-mono text-xs text-primary">{project.year}</p>
                 <h3 className="font-heading text-lg font-bold text-text-primary md:text-xl">
@@ -144,6 +144,7 @@ export function ProjectModal({
                       className="object-cover object-top"
                       sizes="(max-width: 768px) 100vw, 80vw"
                       priority
+                      unoptimized
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
                   </motion.div>
@@ -180,7 +181,7 @@ export function ProjectModal({
             </div>
 
             {total > 1 && (
-              <div className="flex gap-2 overflow-x-auto border-t border-border p-4 md:p-5">
+              <div className="flex gap-2 overflow-x-auto shrink-0 border-t border-border p-4 md:p-5">
                 {images.map((image, i) => (
                   <button
                     key={image.id}
@@ -194,19 +195,17 @@ export function ProjectModal({
                     aria-label={`View ${image.caption}`}
                     aria-current={i === index}
                   >
-                    <Image
+                    <img
                       src={image.src}
                       alt={image.alt}
-                      fill
-                      className="object-cover object-top"
-                      sizes="128px"
+                      className="h-full w-full object-cover object-top"
                     />
                   </button>
                 ))}
               </div>
             )}
 
-            <div className="grid gap-4 border-t border-border p-5 md:grid-cols-2 md:p-6">
+            <div className="grid gap-4 shrink-0 border-t border-border p-5 md:grid-cols-2 md:p-6">
               <div>
                 <p className="font-mono text-xs tracking-widest text-text-muted uppercase">
                   Stack

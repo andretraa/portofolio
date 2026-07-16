@@ -42,11 +42,10 @@ export function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 md:top-1.5 md:px-4">
       <nav
-        className={`flex h-14 w-full items-center justify-between px-4 transition-all duration-300 md:section-container md:rounded-2xl md:border md:px-4 ${
-          scrolled
-            ? "border-border bg-surface/95 shadow-sm backdrop-blur-xl md:shadow-lg md:shadow-black/10"
-            : "border-b border-border/60 bg-surface/90 backdrop-blur-lg md:border-transparent md:bg-surface/40"
-        }`}
+        className={`flex h-14 w-full items-center justify-between px-4 transition-all duration-300 md:section-container md:rounded-2xl md:border md:px-4 ${scrolled
+          ? "border-border bg-surface/95 shadow-sm backdrop-blur-xl md:shadow-lg md:shadow-black/10"
+          : "border-b border-border/60 bg-surface/90 backdrop-blur-lg md:border-transparent md:bg-surface/40"
+          }`}
       >
         <Link
           href="#"
@@ -54,13 +53,13 @@ export function Navbar() {
           aria-label="Back to top"
         >
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-secondary text-sm font-black text-white">
-            A
+            A1
           </span>
           <span className="text-text-primary sm:inline">
-            Andre<span className="text-primary">.</span>
+            ATRA<span className="text-primary">.</span>
           </span>
         </Link>
- 
+
         <ul className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => {
             const id = link.href.replace("#", "");
@@ -69,11 +68,10 @@ export function Navbar() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`relative rounded-lg px-3 py-1.5 text-sm transition-all duration-300 ${
-                    isActive
-                      ? "text-text-primary"
-                      : "text-text-secondary hover:text-text-primary"
-                  }`}
+                  className={`relative rounded-lg px-3 py-1.5 text-sm transition-all duration-300 ${isActive
+                    ? "text-text-primary"
+                    : "text-text-secondary hover:text-text-primary"
+                    }`}
                 >
                   {isActive && (
                     <motion.span
@@ -88,7 +86,7 @@ export function Navbar() {
             );
           })}
         </ul>
- 
+
         <div className="flex items-center gap-3">
           <a
             href="/cv.pdf"
