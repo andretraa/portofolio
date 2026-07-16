@@ -53,8 +53,8 @@ function DesignShowcaseDeck() {
         zIndex: 2,
         rotate: 6,
         scale: 0.92,
-        x: 35,
-        y: 15,
+        x: 40,
+        y: 20,
         opacity: 0.85,
       };
     } else {
@@ -62,24 +62,72 @@ function DesignShowcaseDeck() {
         zIndex: 1,
         rotate: -6,
         scale: 0.84,
-        x: -35,
-        y: 30,
+        x: -40,
+        y: 35,
         opacity: 0.65,
       };
     }
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center h-[380px] sm:h-[460px] lg:h-[500px] w-full">
-      <div className="absolute -inset-10 rounded-full bg-gradient-to-br from-primary/15 via-secondary/10 to-transparent blur-[80px]" />
+    <div className="relative flex flex-col items-center justify-center h-[420px] sm:h-[500px] lg:h-[540px] w-full rounded-3xl border border-border/40 bg-surface/10 backdrop-blur-[1px] p-6 overflow-hidden bg-[radial-gradient(rgba(255,255,255,0.04)_1.2px,transparent_1.2px)] bg-[size:16px_16px]">
       
-      <div className="relative h-[290px] w-full max-w-[270px] sm:h-[360px] sm:max-w-[320px]">
+      {/* Figma-like Canvas Corner Ticks */}
+      <div className="absolute top-3 left-3 w-4 h-4 border-t border-l border-primary/30" />
+      <div className="absolute top-3 right-3 w-4 h-4 border-t border-r border-primary/30" />
+      <div className="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-primary/30" />
+      <div className="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-primary/30" />
+
+      {/* Designer Canvas Info Overlays */}
+      <div className="absolute top-4 left-4 hidden sm:flex items-center gap-2 font-mono text-[9px] text-text-muted/60 select-none">
+        <span className="flex h-1.5 w-1.5 rounded-full bg-primary/70 animate-pulse" />
+        <span>CANVAS_BOARD</span>
+        <span className="text-border">|</span>
+        <span>X: 1280 Y: 720</span>
+      </div>
+
+      <div className="absolute top-4 right-4 hidden sm:flex items-center gap-1.5 font-mono text-[9px] text-text-muted/60 select-none bg-surface-elevated/40 px-2 py-0.5 rounded border border-border/30">
+        <span>Zoom: 95%</span>
+      </div>
+
+      {/* Floating Mini Toolbar Mockup */}
+      <div className="absolute bottom-4 left-4 hidden md:flex items-center gap-1.5 rounded-lg border border-border/60 bg-surface/95 px-2 py-1 shadow-lg backdrop-blur-md select-none">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-3 w-3 text-primary">
+          <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.83 17.606a2.19 2.19 0 0 1-.774.508l-3.356 1.12a.75.75 0 0 1-.961-.96l1.12-3.357a2.19 2.19 0 0 1 .508-.774L16.862 4.487Zm0 0L19.5 7.125" />
+        </svg>
+        <span className="font-heading text-[10px] font-bold text-text-secondary">Pen Tool</span>
+        <span className="h-3 w-px bg-border" />
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-3 w-3 text-text-muted">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75h16.5v16.5H3.75V3.75z" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-3 w-3 text-text-muted">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+        </svg>
+      </div>
+
+      {/* Floating Designer Cursor Mockup */}
+      <div className="absolute top-[22%] right-[12%] pointer-events-none select-none z-30 hidden lg:block animate-float">
+        <div className="relative">
+          <svg className="h-5 w-5 text-primary drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] fill-current" viewBox="0 0 24 24">
+            <path d="M4.5 3v15.2l4.7-4.4 5.8 8.8 2.5-1.6-5.8-8.8 7.3-.1z"/>
+          </svg>
+          <span className="absolute left-4 top-4 rounded-md bg-primary px-1.5 py-0.5 font-mono text-[8px] font-bold text-white shadow-md">
+            Andre
+          </span>
+        </div>
+      </div>
+
+      {/* Background glow */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/5 to-transparent pointer-events-none" />
+      
+      {/* Cards stack */}
+      <div className="relative h-[340px] w-full max-w-[290px] sm:h-[400px] sm:max-w-[340px]">
         {cards.map((card, index) => {
           const style = getCardStyle(index);
           return (
             <motion.div
               key={card.id}
-              className="absolute inset-0 origin-center rounded-2xl border border-border bg-surface p-2 shadow-2xl transition-all cursor-pointer select-none"
+              className="absolute inset-0 origin-center rounded-2xl border border-border bg-surface p-2.5 shadow-2xl transition-all cursor-pointer select-none"
               animate={style}
               transition={{ type: "spring", stiffness: 100, damping: 18 }}
               onClick={() => setActiveIndex(index)}
@@ -92,6 +140,7 @@ function DesignShowcaseDeck() {
                   className="object-cover object-top pointer-events-none"
                   sizes="(max-w-768px) 100vw, 400px"
                   priority={index === 0}
+                  unoptimized
                 />
               </div>
               <div className="flex h-[18%] items-center justify-between px-2.5">

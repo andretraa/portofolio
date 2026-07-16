@@ -93,10 +93,10 @@ export function Contact() {
                   valueText = "andretririzky123@gmail.com";
                 } else if (channel.id === "whatsapp" || channel.label.toLowerCase() === "whatsapp") {
                   labelText = "WhatsApp";
-                  valueText = "+62 812-3456-7890";
+                  valueText = "+62 877-8923-5490";
                   linkHref = "https://wa.me/6287789235490";
                 } else if (channel.id === "instagram") {
-                  valueText = "@andretraa";
+                  valueText = "@_andretraa";
                   linkHref = "https://instagram.com/_andretraa";
                 } else if (channel.id === "linkedin") {
                   valueText = "andre-tri-rizky-ariyanto";

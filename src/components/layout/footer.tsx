@@ -10,10 +10,10 @@ export function Footer() {
   return (
     <footer className="relative border-t border-border/20 bg-surface/20">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-      
+
       <div className="section-container py-10">
         <div className="grid gap-8 md:grid-cols-3 items-center text-center md:text-left">
-          
+
           {/* Left Column: Brand & Slogan */}
           <div className="flex flex-col items-center md:items-start">
             <Link href="#" className="font-heading text-base font-bold text-text-primary">
@@ -27,7 +27,7 @@ export function Footer() {
 
           {/* Center Column: Copyright */}
           <div className="text-center font-heading text-xs text-text-muted">
-            &copy; {new Date().getFullYear()} Andre Tri Rizky. All Rights Reserved.
+            &copy; {new Date().getFullYear()} Create By Andre Tri Rizky Ariyanto.
           </div>
 
           {/* Right Column: Nav Links */}

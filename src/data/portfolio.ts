@@ -25,11 +25,11 @@ export const portfolio: Portfolio = {
 
   profile: {
     firstName: "Andre Tri Rizky Ariyanto",
-    displayName: "Andre",
-    role: "Graphic Designer & UI/UX Designer",
-    roleHighlight: "UI/UX Designer",
+    displayName: "Andre Tri Rizky",
+    role: "Graphic Designer & Social Media Specialist",
+    roleHighlight: "Content Creator",
     tagline:
-      "I create modern digital experiences that help brands stand out and connect with their audience.",
+      "Bridging the gap between innovative graphic design and effective social media strategies to elevate your brand's digital presence and drive real impact.",
     greeting: "Hi, I'm",
     available: true,
     availabilityText: "Available for opportunities",
@@ -45,7 +45,7 @@ export const portfolio: Portfolio = {
     ],
     ctas: [
       { id: "projects", label: "View Projects", href: "#projects", variant: "primary", showArrow: true },
-      { id: "cv", label: "Download CV", href: "/cv.pdf", variant: "secondary", download: true },
+      { id: "cv", label: "Download CV", href: "/porto_andre.pdf", variant: "secondary", download: true },
     ],
     rotatingPhrases: [
       "UI/UX Designs",
