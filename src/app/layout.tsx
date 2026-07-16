@@ -69,8 +69,9 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
     >
-      <body className="noise-bg antialiased">
+      <body className="noise-bg antialiased" suppressHydrationWarning>
         <CustomCursor />
         <ScrollProgress />
         <MouseGlow />

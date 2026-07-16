@@ -147,17 +147,17 @@ export function Projects() {
                     const getProjectThumbnail = (id: string) => {
                       switch (id) {
                         case "klikmedis":
-                          return "/projects/klikmedis/emr.svg";
+                          return "/projects/klikmedis/emr.png";
                         case "baytgo":
-                          return "/projects/baytgo/mobile.svg";
+                          return "/projects/baytgo/mobile.png";
                         case "webyouneed":
-                          return "/projects/webyouneed/homepage.svg";
+                          return "/projects/webyouneed/homepage.png";
                         case "daksa":
-                          return "/projects/daksa/profile.svg";
+                          return "/projects/daksa/profile.png";
                         case "packaging-design":
-                          return "/projects/daksa/profile.svg";
+                          return "/projects/daksa/packaging.png";
                         default:
-                          return "/projects/jaksimpus/dashboard.svg";
+                          return "/projects/jaksimpus/dashboard.png";
                       }
                     };
                     const fallbackImg = getProjectThumbnail(project.id);

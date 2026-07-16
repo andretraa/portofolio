@@ -11,17 +11,17 @@ function DesignShowcaseDeck() {
   const cards = [
     {
       id: "jaksimpus",
-      title: "JakSimpus - UI/UX Design",
-      src: "/projects/jaksimpus/dashboard.svg",
+      title: "Coffee Shop - Brand Identity",
+      src: "/projects/jaksimpus/dashboard.png",
       rotate: -4,
       scale: 0.95,
       y: -10,
       x: -15,
     },
     {
-      id: "baytgo",
-      title: "BaytGo - Mobile App",
-      src: "/projects/baytgo/mobile.svg",
+      id: "klikmedis",
+      title: "Mobile Banking - UI/UX App",
+      src: "/projects/klikmedis/emr.png",
       rotate: 4,
       scale: 0.95,
       y: 10,
@@ -29,8 +29,8 @@ function DesignShowcaseDeck() {
     },
     {
       id: "webyouneed",
-      title: "WebYouNeed - Web Branding",
-      src: "/projects/webyouneed/homepage.svg",
+      title: "Landing Page - Web Design",
+      src: "/projects/webyouneed/homepage.png",
       rotate: 0,
       scale: 1,
       y: 0,
