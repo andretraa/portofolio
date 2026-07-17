@@ -316,7 +316,7 @@ export const portfolio: Portfolio = {
     { category: "Mobile", color: "#8B5CF6", items: ["React Native"] },
     { category: "Database", color: "#10B981", items: ["MySQL", "PostgreSQL"] },
     { category: "Infrastructure", color: "#F59E0B", items: ["Linux", "Nginx", "Docker", "Git", "Redis"] },
-    { category: "Design", color: "#EC4899", items: ["Figma"] },
+    { category: "Design", color: "#EC4899", items: ["Canva", "CapCut", "Figma"] },
   ],
 
   skills: [
@@ -324,12 +324,19 @@ export const portfolio: Portfolio = {
   ],
 
   designerSkills: [
+    { name: "Social Media Design", level: 95 },
+    { name: "Branding & Visual Identity", level: 92 },
+    { name: "Feed Instagram Design", level: 95 },
+    { name: "Carousel Design", level: 90 },
+    { name: "Thumbnail Design (YouTube)", level: 90 },
+    { name: "Content Planner", level: 88 },
+    { name: "Editing", level: 89 },
+  ],
+
+  designTools: [
     { name: "CapCut", level: 95 },
     { name: "Canva", level: 95 },
     { name: "Figma", level: 92 },
-    { name: "HTML / CSS", level: 85 },
-    { name: "JavaScript", level: 80 },
-    { name: "React", level: 70 },
   ],
 
   impact: [

@@ -70,7 +70,7 @@ function DesignShowcaseDeck() {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center h-[420px] sm:h-[500px] lg:h-[540px] w-full rounded-3xl border border-border/40 bg-surface/10 backdrop-blur-[1px] p-6 overflow-hidden bg-[radial-gradient(rgba(255,255,255,0.04)_1.2px,transparent_1.2px)] bg-[size:16px_16px]">
+    <div className="relative flex flex-col items-center justify-center h-[420px] sm:h-[500px] lg:h-[540px] w-full rounded-3xl border border-border/40 bg-surface/10 backdrop-blur-[1px] p-6 overflow-hidden bg-[radial-gradient(rgba(15,23,42,0.04)_1.2px,transparent_1.2px)] bg-[size:16px_16px]">
       
       {/* Figma-like Canvas Corner Ticks */}
       <div className="absolute top-3 left-3 w-4 h-4 border-t border-l border-primary/30" />

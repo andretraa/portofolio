@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import { SectionHeading } from "@/components/ui";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
-import { getPortfolio, getSectionConfig } from "@/lib/portfolio";
-import { AnimatedSection, FadeUp } from "@/lib/animations";
+import { getPortfolio, getSectionConfig, getSectionNumber } from "@/lib/portfolio";
+import { AnimatedSection, FadeUp, FadeLeft, FadeRight } from "@/lib/animations";
 
 export function About() {
   const { about } = getPortfolio();
@@ -45,47 +46,42 @@ export function About() {
       className="section-padding section-glow section-alt border-t border-border/20"
     >
       <div className="section-container">
+        {heading && (
+          <FadeUp className="mb-12">
+            <SectionHeading
+              number={getSectionNumber("about") ?? "01"}
+              label={heading.label}
+              title={heading.title}
+              align="center"
+            />
+          </FadeUp>
+        )}
+
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16 items-center">
 
           {/* Left Column: Portrait Squircle Frame */}
           <div className="lg:col-span-5 flex justify-center">
-            <FadeUp className="w-full flex justify-center">
-              <div className="relative aspect-[3/4] w-full max-w-[320px] rounded-[36px] overflow-hidden bg-gradient-to-br from-primary via-indigo-600 to-secondary p-[3px] shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-30 blur-2xl animate-pulse-glow" />
-                <div className="relative h-full w-full rounded-[33px] bg-surface-elevated overflow-hidden flex items-center justify-center">
+            <FadeLeft className="w-full flex justify-center">
+              <div className="relative aspect-[3/4] w-full max-w-[320px] rounded-[36px] overflow-hidden bg-gradient-to-br from-primary/45 to-secondary/35 p-0.5 shadow-xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-15 blur-xl" />
+                <div className="relative h-full w-full rounded-[34.5px] bg-surface overflow-hidden flex items-center justify-center">
                   <Image
                     src="/about-photo.jpg"
                     alt="Andre Tri Rizky Ariyanto"
                     fill
-                    className="object-cover object-center"
+                    className="object-cover object-center transition-transform duration-700 hover:scale-[1.03]"
                     sizes="(max-w-768px) 100vw, 320px"
                     priority
                   />
-                  <div className="absolute bottom-4 left-4 right-4 flex justify-between font-mono text-[9px] text-white bg-background/40 backdrop-blur-[2px] px-2 py-1 rounded-md">
-                  </div>
                 </div>
               </div>
-            </FadeUp>
+            </FadeLeft>
           </div>
 
           {/* Right Column: Text & Stats Grid */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            {heading && (
-              <FadeUp>
-                <span className="font-mono text-xs tracking-widest text-primary uppercase">
-                  {heading.label}
-                </span>
-                <h2 className="mt-2 font-heading text-3xl font-bold leading-tight text-text-primary sm:text-4xl">
-                  {heading.title.split(" ").map((word, i) => (
-                    <span key={i} className={word === "Purpose" ? "text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent" : ""}>
-                      {word}{" "}
-                    </span>
-                  ))}
-                </h2>
-              </FadeUp>
-            )}
 
-            <FadeUp delay={0.1}>
+            <FadeRight delay={0.1}>
               <div className="mt-6 space-y-4">
                 <p className="text-base leading-relaxed text-text-secondary">
                   {about.paragraphs[0]}
@@ -96,7 +92,7 @@ export function About() {
                   </p>
                 )}
               </div>
-            </FadeUp>
+            </FadeRight>
 
             {/* Stats Grid */}
             <div className="mt-8 grid gap-4 grid-cols-2 sm:gap-5">

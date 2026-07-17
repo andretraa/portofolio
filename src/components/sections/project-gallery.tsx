@@ -73,7 +73,7 @@ export function ProjectGallery({ project, index, onOpen }: ProjectGalleryProps) 
                   className="object-cover object-top transition-transform duration-700 group-hover/gallery:scale-[1.05]"
                   sizes="(max-width: 768px) 100vw, 40vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
                 <div className="absolute top-3 left-3 flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-black/30 font-mono text-xs text-white/80 backdrop-blur-sm">
                   {String(index + 1).padStart(2, "0")}

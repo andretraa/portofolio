@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { getPortfolio, getSectionConfig } from "@/lib/portfolio";
+import { SectionHeading } from "@/components/ui";
+import { getPortfolio, getSectionConfig, getSectionNumber } from "@/lib/portfolio";
 import { AnimatedSection, FadeUp } from "@/lib/animations";
 
 export function Contact() {
@@ -65,24 +66,23 @@ export function Contact() {
       className="section-padding section-glow border-t border-border/20"
     >
       <div className="section-container">
+        {heading && (
+          <FadeUp className="mb-12">
+            <SectionHeading
+              number={getSectionNumber("contact") ?? "05"}
+              label={heading.label}
+              title={heading.title}
+              align="center"
+            />
+          </FadeUp>
+        )}
+
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16 items-start">
 
           {/* Left Column: Let's Work Together Info */}
           <div className="lg:col-span-5 flex flex-col justify-center">
-            <FadeUp>
-              <span className="font-mono text-xs tracking-widest text-primary uppercase">
-                {heading.label}
-              </span>
-              <h2 className="mt-2 font-heading text-3xl font-bold leading-tight text-glow sm:text-4xl">
-                Let&apos;s <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Work</span> Together!
-              </h2>
-              <p className="mt-4 text-sm leading-relaxed text-text-secondary">
-                {heading.subtitle}
-              </p>
-            </FadeUp>
-
             {/* Social channels */}
-            <div className="mt-8 space-y-4">
+            <div className="space-y-4">
               {contact.channels.map((channel, index) => {
                 // Determine user values based on original links
                 let labelText = channel.label;

@@ -83,3 +83,39 @@ export function FadeUp({ children, className = "", delay = 0 }: FadeUpProps) {
     </motion.div>
   );
 }
+
+interface FadeLeftProps {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}
+
+export function FadeLeft({ children, className = "", delay = 0 }: FadeLeftProps) {
+  return (
+    <motion.div
+      className={className}
+      variants={fadeLeft}
+      transition={{ delay }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+interface FadeRightProps {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}
+
+export function FadeRight({ children, className = "", delay = 0 }: FadeRightProps) {
+  return (
+    <motion.div
+      className={className}
+      variants={fadeRight}
+      transition={{ delay }}
+    >
+      {children}
+    </motion.div>
+  );
+}

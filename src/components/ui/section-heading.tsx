@@ -36,7 +36,7 @@ export function SectionHeading({
         className={`mb-6 flex items-end gap-4 ${centered ? "justify-center" : ""}`}
       >
         {number && (
-          <span className="font-heading text-5xl font-bold leading-none text-surface-elevated md:text-6xl">
+          <span className="font-heading text-5xl font-bold leading-none text-primary/15 md:text-6xl">
             {number}
           </span>
         )}

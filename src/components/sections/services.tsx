@@ -1,6 +1,6 @@
 "use client";
 
-import { SectionHeading } from "@/components/ui";
+import { SectionHeading, TiltCard } from "@/components/ui";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
 import { getSectionConfig, getSectionNumber } from "@/lib/portfolio";
 import { AnimatedSection, FadeUp } from "@/lib/animations";
@@ -85,26 +85,28 @@ export function Services() {
         <div className="mt-12 grid gap-6 md:grid-cols-3 lg:gap-8">
           {services.map((service, index) => (
             <FadeUp key={service.title} delay={index * 0.15}>
-              <CardSpotlight className="glass-card flex flex-col items-center p-8 text-center md:items-start md:text-left rounded-2xl border border-border/60 hover:border-primary/45 transition-all">
-                <div className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${service.iconColor} shadow-lg`}>
-                  {service.svgIcon}
-                </div>
-                
-                <h3 className="mt-6 font-heading text-xl font-bold text-text-primary md:text-2xl">
-                  {service.title}
-                </h3>
-                
-                <ul className="mt-6 space-y-3.5 w-full text-left">
-                  {service.bullets.map((bullet) => (
-                    <li key={bullet} className="flex items-center gap-3 font-heading text-sm text-text-secondary">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className={`h-4.5 w-4.5 shrink-0 ${service.textColor}`}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                      </svg>
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-              </CardSpotlight>
+              <TiltCard className="h-full">
+                <CardSpotlight className="glass-card h-full flex flex-col items-center p-8 text-center md:items-start md:text-left rounded-2xl border border-border/60 hover:border-primary/45 transition-all">
+                  <div className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${service.iconColor} shadow-lg`}>
+                    {service.svgIcon}
+                  </div>
+                  
+                  <h3 className="mt-6 font-heading text-xl font-bold text-text-primary md:text-2xl">
+                    {service.title}
+                  </h3>
+                  
+                  <ul className="mt-6 space-y-3.5 w-full text-left">
+                    {service.bullets.map((bullet) => (
+                      <li key={bullet} className="flex items-center gap-3 font-heading text-sm text-text-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className={`h-4.5 w-4.5 shrink-0 ${service.textColor}`}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                        </svg>
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                </CardSpotlight>
+              </TiltCard>
             </FadeUp>
           ))}
         </div>

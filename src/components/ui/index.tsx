@@ -31,7 +31,7 @@ export function MagneticButton({
     secondary:
       "glass-card text-text-primary hover:border-primary/30 hover:bg-surface-elevated",
     ghost:
-      "bg-transparent text-text-secondary border border-border hover:text-text-primary hover:border-primary/40 hover:bg-white/[0.02]",
+      "bg-transparent text-text-secondary border border-border hover:text-text-primary hover:border-primary/40 hover:bg-black/[0.04]",
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -141,3 +141,4 @@ export function ArrowIcon() {
 
 export { SectionHeading, SectionLabel } from "./section-heading";
 export { ScrollProgress } from "./scroll-progress";
+export { TiltCard } from "./tilt-card";

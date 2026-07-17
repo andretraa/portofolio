@@ -177,7 +177,8 @@ export interface Portfolio {
   projects: Project[];
   techStack: TechCategory[];
   skills: string[];
-  designerSkills?: { name: string; level: number }[];
+  designerSkills?: { name: string; level: number; description?: string }[];
+  designTools?: { name: string; level: number }[];
   impact: ImpactStat[];
   contact: ContactContent;
   footer: FooterContent;

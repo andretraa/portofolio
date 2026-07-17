@@ -95,7 +95,7 @@ export function ProjectModal({
                       background:
                         i === index
                           ? project.accent
-                          : "rgba(255,255,255,0.08)",
+                          : "rgba(15, 23, 42, 0.08)",
                     }}
                   />
                 ))}
